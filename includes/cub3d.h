@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 18:24:25 by jose              #+#    #+#             */
-/*   Updated: 2023/06/07 16:10:07 by marvin           ###   ########.fr       */
+/*   Updated: 2023/06/07 22:28:53 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <errno.h>
 # include <string.h>
 # include <stdbool.h>
+# include <math.h>
 
 /*	error's macro*/
 # define BAD_PARAMETERS 1
@@ -51,13 +52,21 @@ typedef struct s_data_image
 	struct s_data_image	*next;
 }	t_data_img;
 
+typedef struct s_wall
+{
+	char	*north;
+	char	*south;
+	char	*east;
+	char	*west;
+}	t_wall;
+
 typedef struct s_win
 {
 	void		*mlx;
 	void		*mlx_win;
 	t_data_img	*lst;
 	char		**map;
-	char		*move;
+	t_wall		*wall;
 }	t_win;
 
 /*	parse.c	*/
