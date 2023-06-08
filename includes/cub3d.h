@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 18:24:25 by jose              #+#    #+#             */
-/*   Updated: 2023/06/07 22:28:53 by marvin           ###   ########.fr       */
+/*   Updated: 2023/06/08 09:15:38 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,20 @@ typedef struct s_win
 
 /*	parse.c	*/
 int		ft_good_extension(char *str_file);
+t_win	*ft_parsing_manager(char *str_file);
+
+/*	parse_utils.c	*/
+char	**ft_set_file(char *str_file);
+
+/*	parse_utils2.c	*/
+
+/*	parse_utils3.c	*/
+int		ft_good_texture(char **file);
 
 /*	error.c	*/
 void	ft_error(int err, char *err_msg, t_win *win);
+
+/*	free.c	*/
+void	ft_free_all_str(char **map);
 
 #endif

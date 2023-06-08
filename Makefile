@@ -6,7 +6,7 @@
 #    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/14 17:43:43 by jose              #+#    #+#              #
-#    Updated: 2023/06/07 16:12:18 by marvin           ###   ########.fr        #
+#    Updated: 2023/06/08 06:21:26 by marvin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,10 @@ RM = rm -f
 
 C_FILES =	main.c \
 			parse.c \
-			error.c
+			parse_utils.c \
+			parse_utils2.c \
+			error.c \
+			free.c
 
 SRC = $(addprefix src/, $(C_FILES))
 
