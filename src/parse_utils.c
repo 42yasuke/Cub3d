@@ -17,6 +17,7 @@ static char	**ft_init_file(char *str_file)
 	int		fd;
 	int		nbr_str;
 	char	**file;
+	char	*line;
 
 	fd = open(str_file, O_RDONLY);
 	if (fd == -1)
@@ -44,6 +45,7 @@ char	**ft_set_file(char *str_file)
 	int		fd;
 	int		nbr_str;
 	char	**file;
+	char	*line;
 
 	file = ft_init_file(str_file);
 	fd = open(str_file, O_RDONLY);

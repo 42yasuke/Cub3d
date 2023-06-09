@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
+#    By: jose <jose@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/14 17:43:43 by jose              #+#    #+#              #
-#    Updated: 2023/06/08 06:21:26 by marvin           ###   ########.fr        #
+#    Updated: 2023/06/09 19:51:41 by jose             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,8 @@ C_FILES =	main.c \
 			parse.c \
 			parse_utils.c \
 			parse_utils2.c \
+			parse_texture.c \
+			parse_map.c \
 			error.c \
 			free.c
 

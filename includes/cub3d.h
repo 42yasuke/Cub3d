@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 18:24:25 by jose              #+#    #+#             */
-/*   Updated: 2023/06/08 09:15:38 by marvin           ###   ########.fr       */
+/*   Updated: 2023/06/09 19:53:32 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,14 @@ t_win	*ft_parsing_manager(char *str_file);
 char	**ft_set_file(char *str_file);
 
 /*	parse_utils2.c	*/
+int		ft_get_map(char **file);
+int		ft_is_a_good_file(char **file);
 
-/*	parse_utils3.c	*/
+/*	parse_texture.c	*/
 int		ft_good_texture(char **file);
+
+/*	parse_map.c	*/
+int		ft_map_closed(char **file, int i);
 
 /*	error.c	*/
 void	ft_error(int err, char *err_msg, t_win *win);
