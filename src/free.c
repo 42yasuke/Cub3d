@@ -17,7 +17,9 @@ void	ft_free_all_str(char **map)
 	int	i;
 
 	i = 0;
-	while (map && map[i])
+	if (!map)
+		return ;
+	while (map[i])
 	{
 		free(map[i]);
 		i++;

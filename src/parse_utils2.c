@@ -12,16 +12,22 @@
 
 #include "cub3d.h"
 
-static int	ft_there_is_only_digit(char *str)
+static int	ft_there_is_only_digit(char **str)
 {
 	int	i;
 	int	j;
 
 	i = -1;
-	while ()
+	while (str[++i])
 	{
-		
+		j = -1;
+		while (str[i][++j])
+		{
+			if (!ft_isdigit(str[i][j]))
+				return (false);
+		}
 	}
+	return (true);
 }
 
 int	ft_get_map(char **file)
