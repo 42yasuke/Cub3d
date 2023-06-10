@@ -80,3 +80,26 @@ char	**ft_set_file(char *str_file)
 	close(fd);
 	return (file);
 }
+
+int	ft_good_texture(char **file)
+{
+	if (!ft_research_texture("NO", file))
+		return (false);
+	if (!ft_research_texture("SO", file))
+		return (false);
+	if (!ft_research_texture("EA", file))
+		return (false);
+	if (!ft_research_texture("WE", file))
+		return (false);
+	if (!ft_research_texture("F", file))
+		return (false);
+	if (!ft_research_texture("C", file))
+		return (false);
+	if (!ft_research_texture(NULL, file))
+		return (false);
+	if (!ft_verif_args("F", file) || !ft_verif_args("C", file))
+		return (false);
+	if (!ft_look_order(file))
+		return (false);
+	return (true);
+}

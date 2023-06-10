@@ -6,7 +6,7 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 18:24:25 by jose              #+#    #+#             */
-/*   Updated: 2023/06/09 19:53:32 by jose             ###   ########.fr       */
+/*   Updated: 2023/06/10 20:08:17 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,13 +75,16 @@ t_win	*ft_parsing_manager(char *str_file);
 
 /*	parse_utils.c	*/
 char	**ft_set_file(char *str_file);
+int		ft_good_texture(char **file);
 
-/*	parse_utils2.c	*/
+/*	parse_file.c	*/
 int		ft_get_map(char **file);
 int		ft_is_a_good_file(char **file);
 
 /*	parse_texture.c	*/
-int		ft_good_texture(char **file);
+int		ft_research_texture(char *str, char **file);
+int		ft_look_order(char **file);
+int		ft_verif_args(char *str, char **file);
 
 /*	parse_map.c	*/
 int		ft_map_closed(char **file, int i);

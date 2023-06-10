@@ -6,7 +6,7 @@
 #    By: jose <jose@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/14 17:43:43 by jose              #+#    #+#              #
-#    Updated: 2023/06/10 10:10:30 by jose             ###   ########.fr        #
+#    Updated: 2023/06/10 20:04:30 by jose             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ RM = rm -f
 C_FILES =	main.c \
 			parse.c \
 			parse_utils.c \
-			parse_utils2.c \
+			parse_file.c \
 			parse_texture.c \
 			parse_map.c \
 			error.c \

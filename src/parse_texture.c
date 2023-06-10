@@ -57,7 +57,7 @@ static int	ft_verif_texture(char **line, char *str, int *nb)
 	return (true);
 }
 
-static int	ft_research_texture(char *str, char **file)
+int	ft_research_texture(char *str, char **file)
 {
 	int		i;
 	int		nb;
@@ -82,7 +82,7 @@ static int	ft_research_texture(char *str, char **file)
 	return (nb == 1);
 }
 
-static int	ft_look_order(char **file)
+int	ft_look_order(char **file)
 {
 	int		i;
 	int		j;
@@ -100,7 +100,7 @@ static int	ft_look_order(char **file)
 	return (true);
 }
 
-static int	ft_verif_args(char *str, char **file)
+int	ft_verif_args(char *str, char **file)
 {
 	int		i;
 	int		i2;
@@ -126,28 +126,5 @@ static int	ft_verif_args(char *str, char **file)
 		}
 		ft_free_all_str(l);
 	}
-	return (true);
-}
-
-int	ft_good_texture(char **file)
-{
-	if (!ft_research_texture("NO", file))
-		return (false);
-	if (!ft_research_texture("SO", file))
-		return (false);
-	if (!ft_research_texture("EA", file))
-		return (false);
-	if (!ft_research_texture("WE", file))
-		return (false);
-	if (!ft_research_texture("F", file))
-		return (false);
-	if (!ft_research_texture("C", file))
-		return (false);
-	if (!ft_research_texture(NULL, file))
-		return (false);
-	if (!ft_verif_args("F", file) || !ft_verif_args("C", file))
-		return (false);
-	if (!ft_look_order(file))
-		return (false);
 	return (true);
 }
