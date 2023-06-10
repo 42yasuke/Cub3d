@@ -6,7 +6,7 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 19:51:12 by jose              #+#    #+#             */
-/*   Updated: 2023/06/09 21:21:36 by jose             ###   ########.fr       */
+/*   Updated: 2023/06/10 19:25:59 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ static int	ft_verif_first_and_last_lines(char **file, int i_start, int i_end)
 	j = -1;
 	while (file[i_start][++j])
 	{
-		if (file[i_start][j] != ' ' || file[i_start][j] != '1')
+		if (file[i_start][j] != ' ' && file[i_start][j] != '1')
 			return (false);
 	}
 	j = -1;
 	while (file[i_end][++j])
 	{
-		if (file[i_end][j] != ' ' || file[i_end][j] != '1')
+		if (file[i_end][j] != ' ' && file[i_end][j] != '1')
 			return (false);
 	}
 	return (true);
@@ -42,10 +42,10 @@ static int	ft_verif_first_and_last_char_of_each_line(char **file, int i_start)
 	{
 		line = ft_strchr(file[i], '1');
 		line2 = ft_strchr(file[i], '0');
-		if (line2 < line)
+		if (line2 && line2 < line)
 			return (false);
-		if (file[i][ft_strlen(file[i] - 1)] != '1' || \
-		file[i][ft_strlen(file[i] - 1)] != ' ')
+		if (file[i][ft_strlen(file[i]) - 1] != '1' && \
+		file[i][ft_strlen(file[i]) - 1] != ' ')
 			return (false);
 	}
 	return (true);
