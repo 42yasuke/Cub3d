@@ -12,16 +12,36 @@
 
 #include "cub3d.h"
 
-int	ft_get_map(char **file)
+static int	ft_there_is_only_digit(char *str)
 {
 	int	i;
+	int	j;
 
 	i = -1;
+	while ()
+	{
+		
+	}
+}
+
+int	ft_get_map(char **file)
+{
+	int		i;
+	char	**line_whithout_space;
+
+	i = -1;
+	line_whithout_space = NULL;
 	while (file[++i])
 	{
 		if (ft_strchr(file[i], '1'))
-			break ;
+		{
+			line_whithout_space = ft_split(file[i], ' ');
+			if (ft_there_is_only_digit(line_whithout_space))
+				break ;
+			ft_free_all_str(line_whithout_space);
+		}
 	}
+	ft_free_all_str(line_whithout_space);
 	return (i);
 }
 
@@ -70,5 +90,5 @@ int	ft_is_a_good_file(char **file)
 		return (false);
 	if (!ft_is_good_map(file))
 		return (false);
-	retunr (true);
+	return (true);
 }

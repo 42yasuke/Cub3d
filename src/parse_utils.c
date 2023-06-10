@@ -24,7 +24,7 @@ static char	**ft_init_file(char *str_file)
 		ft_error(OPEN_FAILED, str_file, NULL);
 	nbr_str = 0;
 	line = get_next_line(fd);
-	while (!line)
+	while (line)
 	{
 		if (line[0] != '\n')
 			nbr_str++;
@@ -40,6 +40,23 @@ static char	**ft_init_file(char *str_file)
 	return (file);
 }
 
+static void	ft_cpy(char **file, int *nbr_str, char *line)
+{
+	char	*str;
+
+	file[nbr_str[0]] = ft_strdup(line);
+	if (!file[nbr_str[0]])
+	{
+		free(line);
+		ft_free_all_str(file);
+		ft_error(MALLOC_FAILED, "malloc failed", NULL);
+	}
+	str = ft_strchr(file[nbr_str[0]], '\n');
+	if (str)
+		str[0] = '\0';
+	nbr_str[0]++;
+}
+
 char	**ft_set_file(char *str_file)
 {
 	int		fd;
@@ -53,12 +70,13 @@ char	**ft_set_file(char *str_file)
 		ft_error(OPEN_FAILED, str_file, NULL);
 	nbr_str = 0;
 	line = get_next_line(fd);
-	while (!line)
+	while (line)
 	{
 		if (line[0] != '\n')
-			file[nbr_str++] = line;
+			ft_cpy(file, &nbr_str, line);
 		free(line);
 		line = get_next_line(fd);
 	}
+	close(fd);
 	return (file);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 18:17:16 by jose              #+#    #+#             */
-/*   Updated: 2023/06/07 22:31:12 by marvin           ###   ########.fr       */
+/*   Updated: 2023/06/10 04:59:34 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	main(int ac, char **av)
 {
 	t_win	*win;
 
+	(void)win;
 	if (ac != 2)
 		ft_error(BAD_PARAMETERS, "bad parameters", NULL);
 	if (!ft_good_extension(av[1]))
@@ -24,7 +25,7 @@ int	main(int ac, char **av)
 	ft_printf("c bon");
 	
 	
-	
+	/*
 	win = ft_initial_window(av[1]);
 	mlx_loop_hook(win->mlx, &ft_draw_map, win);
 	mlx_hook(win->mlx_win, KeyPress, KeyPressMask, &ft_event_manager, win);
@@ -34,6 +35,7 @@ int	main(int ac, char **av)
 	mlx_destroy_display(win->mlx);
 	(free(win->mlx), free(win));
 	return (EXIT_SUCCESS);
+	*/
 }
 
 

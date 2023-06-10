@@ -23,4 +23,5 @@ void	ft_free_all_str(char **map)
 		i++;
 	}
 	free(map);
+	map = NULL;
 }

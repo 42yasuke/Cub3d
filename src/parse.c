@@ -30,12 +30,12 @@ int	ft_good_extension(char *str_file)
 
 t_win	*ft_parsing_manager(char *str_file)
 {
-	int		fd;
-	int		nbr_str;
 	char	**file;
 	t_win	*win;
 
+	win = NULL;
 	file = ft_set_file(str_file);
 	if (!ft_is_a_good_file(file))
-		(ft_free_all(file), ft_error(BAD_PARAMETERS, str_file, NULL));
+		(ft_free_all_str(file), ft_error(BAD_PARAMETERS, str_file, NULL));
+	return (win);
 }

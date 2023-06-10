@@ -23,16 +23,16 @@ static int	ft_research_bad_texture(char **file)
 		line = ft_split(file[i], ' ');
 		if (!line)
 			ft_error(MALLOC_FAILED, "line : malloc failed", NULL);
-		if (ft_strncmp(line[0], "NO", ft_strlen(2)) && \
-			ft_strncmp(line[0], "SO", ft_strlen(2)) && \
-			ft_strncmp(line[0], "EA", ft_strlen(2)) && \
-			ft_strncmp(line[0], "WE", ft_strlen(2)) && \
-			ft_strncmp(line[0], "F", ft_strlen(1)) && \
-			ft_strncmp(line[0], "C", ft_strlen(1)) && \
-			ft_strncmp(line[0], "0", ft_strlen(1)) && \
-			ft_strncmp(line[0], "1", ft_strlen(1)))
-			return (ft_free_all(line), false);
-		ft_free_all(line);
+		if (ft_strncmp(line[0], "NO", 2) && \
+			ft_strncmp(line[0], "SO", 2) && \
+			ft_strncmp(line[0], "EA", 2) && \
+			ft_strncmp(line[0], "WE", 2) && \
+			ft_strncmp(line[0], "F", 1) && \
+			ft_strncmp(line[0], "C", 1) && \
+			ft_strncmp(line[0], "0", 1) && \
+			ft_strncmp(line[0], "1", 1))
+			return (ft_free_all_str(line), false);
+		ft_free_all_str(line);
 	}
 	return (true);
 }
@@ -56,9 +56,9 @@ static int	ft_research_texture(char *str, char **file)
 			if (line[1] && ft_strlen(str) == ft_strlen(line[0]) && !line[2])
 				nb++;
 			else
-				return (ft_free_all(line), false);
+				return (ft_free_all_str(line), false);
 		}
-		ft_free_all(line);
+		ft_free_all_str(line);
 	}
 	return (nb == 1);
 }
@@ -85,27 +85,27 @@ static int	ft_verif_args(char *str, char **file)
 {
 	int		i;
 	int		i2;
-	char	**line;
-	char	**line2;
+	char	**l;
+	char	**l2;
 
 	i = -1;
 	i2 = -1;
 	while (file[++i])
 	{
-		line = ft_split(file[i], ' ');
-		if (!ft_strncmp(line[0], str, ft_strlen(str)))
+		l = ft_split(file[i], ' ');
+		if (!ft_strncmp(l[0], str, ft_strlen(str)))
 		{
-			line2 = ft_split(line[1], ',');
-			while (line2[++i2])
+			l2 = ft_split(l[1], ',');
+			while (l2[++i2])
 			{
-				if (!(ft_strlen(line2[1]) > 0 && ft_strlen(line2[1]) < 4))
-					return (ft_free_all(line), ft_free_all(line2), false);
-				if (!(ft_atoi(line2[1]) > -1 && ft_atoi(line2[1]) < 256))
-					return (ft_free_all(line), ft_free_all(line2), false);
+				if (!(ft_strlen(l2[1]) > 0 && ft_strlen(l2[1]) < 4))
+					return (ft_free_all_str(l), ft_free_all_str(l2), false);
+				if (!(ft_atoi(l2[1]) > -1 && ft_atoi(l2[1]) < 256))
+					return (ft_free_all_str(l), ft_free_all_str(l2), false);
 			}
-			ft_free_all(line2);
+			ft_free_all_str(l2);
 		}
-		ft_free_all(line);
+		ft_free_all_str(l);
 	}
 	return (true);
 }
@@ -121,9 +121,9 @@ int	ft_good_texture(char **file)
 	if (!ft_research_texture("WE", file))
 		return (false);
 	if (!ft_research_texture("F", file))
-		retunr (false);
+		return (false);
 	if (!ft_research_texture("C", file))
-		retunr (false);
+		return (false);
 	if (!ft_research_texture(NULL, file))
 		return (false);
 	if (!ft_verif_args("F", file) || ft_verif_args("C", file))
