@@ -37,6 +37,26 @@ static int	ft_research_bad_texture(char **file)
 	return (true);
 }
 
+static int	ft_verif_texture(char **line, char *str, int *nb)
+{
+	int	fd;
+
+	if (line[1] && ft_strlen(str) == ft_strlen(line[0]) && !line[2])
+	{
+		nb[0]++;
+		if (ft_strlen(str) == 2)
+		{
+			fd = open(line[1], O_RDONLY);
+			if (fd == -1)
+				return (false);
+			close (fd);
+		}
+	}
+	else
+		return (false);
+	return (true);
+}
+
 static int	ft_research_texture(char *str, char **file)
 {
 	int		i;
@@ -54,9 +74,7 @@ static int	ft_research_texture(char *str, char **file)
 			ft_error(MALLOC_FAILED, "line : malloc failed", NULL);
 		if (!ft_strncmp(line[0], str, ft_strlen(str)))
 		{
-			if (line[1] && ft_strlen(str) == ft_strlen(line[0]) && !line[2]) //open(line[1]) ?
-				nb++;
-			else
+			if (!ft_verif_texture(line, str, &nb))
 				return (ft_free_all_str(line), false);
 		}
 		ft_free_all_str(line);
