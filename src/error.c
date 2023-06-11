@@ -32,6 +32,7 @@ void	ft_error(int err, char *err_msg, t_win *win)
 		ft_printf("Error: %s\n", err_msg);
 	if (win)
 	{
+		ft_free_window(win);
 		if (win->mlx)
 			mlx_destroy_display(win->mlx);
 		(free(win->mlx), free(win));

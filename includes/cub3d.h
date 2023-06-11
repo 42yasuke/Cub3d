@@ -6,7 +6,7 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 18:24:25 by jose              #+#    #+#             */
-/*   Updated: 2023/06/10 20:08:17 by jose             ###   ########.fr       */
+/*   Updated: 2023/06/11 17:19:21 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,11 @@
 # include <string.h>
 # include <stdbool.h>
 # include <math.h>
+
+/*	window's macro	*/
+# define WIDTH 800
+# define HEIGHT 600
+# define SQ 64
 
 /*	error's macro*/
 # define BAD_PARAMETERS 1
@@ -52,13 +57,18 @@ typedef struct s_data_image
 	struct s_data_image	*next;
 }	t_data_img;
 
-typedef struct s_wall
+typedef struct s_color
 {
-	char	*north;
-	char	*south;
-	char	*east;
-	char	*west;
-}	t_wall;
+	int	*floor;
+	int	*ceiling;
+}	t_color;
+
+typedef struct s_player
+{
+	double	x;
+	double	y;
+	double	angle;
+}	t_player;
 
 typedef struct s_win
 {
@@ -66,7 +76,8 @@ typedef struct s_win
 	void		*mlx_win;
 	t_data_img	*lst;
 	char		**map;
-	t_wall		*wall;
+	t_color		*color;
+	t_player	*player;
 }	t_win;
 
 /*	parse.c	*/
@@ -94,5 +105,21 @@ void	ft_error(int err, char *err_msg, t_win *win);
 
 /*	free.c	*/
 void	ft_free_all_str(char **map);
+void	ft_free_all_image(void *mlx, t_data_img *lst);
+void	ft_free_window(t_win *window);
+void	ft_free_color(t_color *color);
+
+/*	init.c	*/
+void	ft_init_all(t_win *win, char **file);
+
+/*	init_utils.c	*/
+void	ft_get_ceilling_and_floor_color(char *str, t_color *color);
+
+/*	ft_init_image.c	*/
+
+/*	ft_init_player.c	*/
+double	ft_get_x_player(char **file, t_player *player);
+double	ft_get_y_player(char **file, t_player *player);
+double	ft_get_angle_player(char **file, t_player *player);
 
 #endif

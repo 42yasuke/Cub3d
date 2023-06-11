@@ -6,7 +6,7 @@
 #    By: jose <jose@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/14 17:43:43 by jose              #+#    #+#              #
-#    Updated: 2023/06/10 20:04:30 by jose             ###   ########.fr        #
+#    Updated: 2023/06/11 17:10:06 by jose             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,11 @@ C_FILES =	main.c \
 			parse_texture.c \
 			parse_map.c \
 			error.c \
-			free.c
+			free.c \
+			init.c \
+			init_utils.c \
+			ft_init_image.c \
+			init_player.c
 
 SRC = $(addprefix src/, $(C_FILES))
 
