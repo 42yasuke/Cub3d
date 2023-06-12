@@ -6,7 +6,7 @@
 #    By: jose <jose@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/14 17:43:43 by jose              #+#    #+#              #
-#    Updated: 2023/06/11 17:10:06 by jose             ###   ########.fr        #
+#    Updated: 2023/06/12 17:44:06 by jose             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,8 @@ C_FILES =	main.c \
 			init.c \
 			init_utils.c \
 			ft_init_image.c \
-			init_player.c
+			init_player.c \
+			event.c
 
 SRC = $(addprefix src/, $(C_FILES))
 

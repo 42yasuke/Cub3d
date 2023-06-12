@@ -6,7 +6,7 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 18:24:25 by jose              #+#    #+#             */
-/*   Updated: 2023/06/12 14:52:57 by jose             ###   ########.fr       */
+/*   Updated: 2023/06/12 17:46:18 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,16 @@
 # define WIDTH 800
 # define HEIGHT 600
 # define SQ 64
+
+/*	keybord's macro	*/
+# define KEY_ESC 65307
+# define KEY_Z 119
+# define KEY_Q 97
+# define KEY_D 100
+# define KEY_S 115
+
+/*	mouse's macro	*/
+# define CROSS_BUTTON 1840902816
 
 /*	image's macro	*/
 # define BACKGROUND 1
@@ -129,5 +139,9 @@ void	ft_add_all_image(t_win *win, char **file);
 double	ft_get_x_player(char **file);
 double	ft_get_y_player(char **file);
 double	ft_get_angle_player(char **file);
+
+/*	event.c	*/
+int		ft_close_win(t_win *window);
+int		ft_event_manager(int keycode, t_win *win);
 
 #endif
