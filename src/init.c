@@ -6,7 +6,7 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 04:31:27 by jose              #+#    #+#             */
-/*   Updated: 2023/06/12 16:41:23 by jose             ###   ########.fr       */
+/*   Updated: 2023/06/12 17:31:16 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,12 @@ static t_color	*ft_init_color(char **file)
 	while (file[++i] && i < 2)
 		ft_get_ceilling_and_floor_color(file[i], color);
 	return (color);
-	
 }
 
 static t_player	*ft_init_player(char **file)
 {
 	t_player	*player;
+
 	player = malloc(sizeof(*player));
 	if (!player)
 		return (NULL);
