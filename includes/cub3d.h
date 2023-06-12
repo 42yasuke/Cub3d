@@ -6,7 +6,7 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 18:24:25 by jose              #+#    #+#             */
-/*   Updated: 2023/06/11 17:19:21 by jose             ###   ########.fr       */
+/*   Updated: 2023/06/12 14:41:16 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,13 @@
 # define HEIGHT 600
 # define SQ 64
 
+/*	image's macro	*/
+# define BACKGROUND 1
+# define NORTH 2
+# define SOUTH 3
+# define EAST 4
+# define WEST 5
+
 /*	error's macro*/
 # define BAD_PARAMETERS 1
 # define MALLOC_FAILED 2
@@ -37,6 +44,7 @@
 # define MAP_NOT_VALID 6
 # define BAD_EXTENSION 7
 # define IMAGE_NOT_F 8
+# define M_F "malloc failed"
 
 typedef struct s_image
 {
@@ -48,7 +56,6 @@ typedef struct s_image
 	int		width;
 	int		height;
 	int		id;
-	int		screened;
 }	t_image;
 
 typedef struct s_data_image

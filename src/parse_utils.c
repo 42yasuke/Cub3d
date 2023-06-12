@@ -49,7 +49,7 @@ static void	ft_cpy(char **file, int *nbr_str, char *line)
 	{
 		free(line);
 		ft_free_all_str(file);
-		ft_error(MALLOC_FAILED, "malloc failed", NULL);
+		ft_error(MALLOC_FAILED, M_F, NULL);
 	}
 	str = ft_strchr(file[nbr_str[0]], '\n');
 	if (str)

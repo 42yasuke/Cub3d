@@ -45,13 +45,13 @@ t_win	*ft_init(t_win *win, char **file)
 	win = malloc(sizeof(*win));
 	if (!win)
 		(ft_free_all_str(file), ft_error(MALLOC_FAILED, "malloc_window", NULL));
-	ft_init_all(win, file);//not done
+	ft_init_all(win, file);
 	win->mlx = mlx_init();
 	if (!win->mlx)
 		(ft_free_all_str(file), ft_error(MLX_INIT_FAILED, "mlx_init", win));
 	win->mlx_win = mlx_new_window(win->mlx, WIDTH, HEIGHT, "CUB3D");
 	if (!win->mlx_win)
-		(ft_free_all_str(file), ft_error(MLX_WIN_FAILED, "mlx_win", win));//not done
-	ft_add_all_image(win); //not done
+		(ft_free_all_str(file), ft_error(MLX_WIN_FAILED, "mlx_win", win));
+	ft_add_all_image(win, file); //not done
 	return (ft_free_all_str(file), win);
 }

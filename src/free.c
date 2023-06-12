@@ -50,6 +50,8 @@ void	ft_free_window(t_win *window)
 	if (!window)
 		return ;
 	ft_free_all_str(window->map);
+	ft_free_color(window->color);
+	free(window->player);
 	if (window->mlx)
 	{
 		ft_free_all_image(window->mlx, window->lst);
