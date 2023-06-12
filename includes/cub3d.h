@@ -6,7 +6,7 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 18:24:25 by jose              #+#    #+#             */
-/*   Updated: 2023/06/12 14:41:16 by jose             ###   ########.fr       */
+/*   Updated: 2023/06/12 14:52:57 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,10 +123,11 @@ void	ft_init_all(t_win *win, char **file);
 void	ft_get_ceilling_and_floor_color(char *str, t_color *color);
 
 /*	ft_init_image.c	*/
+void	ft_add_all_image(t_win *win, char **file);
 
 /*	ft_init_player.c	*/
-double	ft_get_x_player(char **file, t_player *player);
-double	ft_get_y_player(char **file, t_player *player);
-double	ft_get_angle_player(char **file, t_player *player);
+double	ft_get_x_player(char **file);
+double	ft_get_y_player(char **file);
+double	ft_get_angle_player(char **file);
 
 #endif

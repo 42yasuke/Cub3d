@@ -6,7 +6,7 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 16:15:35 by jose              #+#    #+#             */
-/*   Updated: 2023/06/12 14:41:04 by jose             ###   ########.fr       */
+/*   Updated: 2023/06/12 17:13:05 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static void	ft_add_background(t_win *win)
 	if (!win->lst->img)
 		ft_error(MALLOC_FAILED, "malloc_failed", win);
 	win->lst->img->img = mlx_xpm_file_to_image(win->mlx, \
-	"image/noir.xpm", &win->lst->img->width, &win->lst->img->height);
+	"/home/jose/C/Cub3d/image/noir.xpm", &win->lst->img->width, &win->lst->img->height);
 	if (!win->lst->img->img)
 		ft_error(IMAGE_NOT_F, "image_not_found", win);
 	win->lst->img->addr = mlx_get_data_addr(win->lst->img->img, \
@@ -69,7 +69,7 @@ static char	*ft_get_image_path(char **file, char *str)
 			return (NULL);
 		if (!ft_strncmp(str, line[0], ft_strlen(str)))
 		{
-			ret = ft_strdup(line[0]);
+			ret = ft_strdup(line[1]);
 			if (!ret)
 				return (ft_free_all_str(line), NULL);
 			break ;
@@ -79,22 +79,22 @@ static char	*ft_get_image_path(char **file, char *str)
 	return (ft_free_all_str(line), ret);
 }
 
-static void	ft_get_wall_image(t_win *win, char **file, char *str)
+static void	ft_get_wall_image(t_win *win, char **file, char *str, int id)
 {
 	char	*path;
 
 	path = ft_get_image_path(file, str);
 	if (!path)
 		(ft_free_all_str(file), ft_error(MALLOC_FAILED, M_F, win));
-	(ft_add_image(win, path, NORTH), free(path));
+	(ft_add_image(win, path, id), free(path));
 }
 
 void	ft_add_all_image(t_win *win, char **file)
 {
 	if (!win->lst)
 		ft_add_background(win);
-	ft_get_wall_image(win, file, "NO");
-	ft_get_wall_image(win, file, "SO");
-	ft_get_wall_image(win, file, "EA");
-	ft_get_wall_image(win, file, "WE");
+	ft_get_wall_image(win, file, "NO", NORTH);
+	ft_get_wall_image(win, file, "SO", SOUTH);
+	ft_get_wall_image(win, file, "EA", EAST);
+	ft_get_wall_image(win, file, "WE", WEST);
 }

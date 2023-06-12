@@ -6,7 +6,7 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 04:31:27 by jose              #+#    #+#             */
-/*   Updated: 2023/06/11 17:19:37 by jose             ###   ########.fr       */
+/*   Updated: 2023/06/12 16:41:23 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ static char	**ft_init_map(char **file)
 {
 	char	**map;
 	int		i;
+	int		j;
 
 	i = ft_get_map(file);
 	while (file[i])
@@ -26,8 +27,9 @@ static char	**ft_init_map(char **file)
 	while (i > -1)
 		map[i--] = NULL;
 	i = ft_get_map(file) - 1;
+	j = -1;
 	while (file[++i])
-		map[i] = ft_strdup(file[i]);
+		map[++j] = ft_strdup(file[i]);
 	return (map);
 }
 
@@ -58,9 +60,9 @@ static t_player	*ft_init_player(char **file)
 	player = malloc(sizeof(*player));
 	if (!player)
 		return (NULL);
-	player->x = ft_get_x_player(file, player);
-	player->y = ft_get_y_player(file, player);
-	player->angle = ft_get_angle_player(file, player);
+	player->x = ft_get_x_player(file);
+	player->y = ft_get_y_player(file);
+	player->angle = ft_get_angle_player(file);
 	return (player);
 }
 

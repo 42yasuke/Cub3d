@@ -6,7 +6,7 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 13:46:44 by jose              #+#    #+#             */
-/*   Updated: 2023/06/11 14:01:02 by jose             ###   ########.fr       */
+/*   Updated: 2023/06/12 14:51:27 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_get_ceilling_and_floor_color(char *str, t_color *color)
 	int		i;
 
 	i = -1;
-	line = ft_spit(str, ' ');
+	line = ft_split(str, ' ');
 	if (!line)
 		return (ft_free_color(color));
 	line2 = ft_split(line[1], ',');

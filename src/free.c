@@ -64,7 +64,7 @@ void	ft_free_window(t_win *window)
 void	ft_free_color(t_color *color)
 {
 	if (!color)
-		return (NULL);
+		return ;
 	free(color->ceiling);
 	free(color->floor);
 	free(color);

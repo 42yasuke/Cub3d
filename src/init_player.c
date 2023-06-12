@@ -6,13 +6,13 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 17:04:03 by jose              #+#    #+#             */
-/*   Updated: 2023/06/11 17:19:15 by jose             ###   ########.fr       */
+/*   Updated: 2023/06/12 14:52:35 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-double	ft_get_x_player(char **file, t_player *player)
+double	ft_get_x_player(char **file)
 {
 	int		i;
 	int		j;
@@ -31,7 +31,7 @@ double	ft_get_x_player(char **file, t_player *player)
 	return (-1);
 }
 
-double	ft_get_y_player(char **file, t_player *player)
+double	ft_get_y_player(char **file)
 {
 	int		i;
 	int		j;
@@ -50,7 +50,7 @@ double	ft_get_y_player(char **file, t_player *player)
 	return (-1);
 }
 
-double	ft_get_angle_player(char **file, t_player *player)
+double	ft_get_angle_player(char **file)
 {
 	int		i;
 	int		j;

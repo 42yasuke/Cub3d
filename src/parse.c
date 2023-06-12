@@ -28,20 +28,10 @@ int	ft_good_extension(char *str_file)
 	return (false);
 }
 
-t_win	*ft_parsing_manager(char *str_file)
+static t_win	*ft_init(char **file)
 {
-	char	**file;
 	t_win	*win;
 
-	win = NULL;
-	file = ft_set_file(str_file);
-	if (!ft_is_a_good_file(file))
-		(ft_free_all_str(file), ft_error(BAD_PARAMETERS, str_file, NULL));
-	return (ft_init(win, file));
-}
-
-t_win	*ft_init(t_win *win, char **file)
-{
 	win = malloc(sizeof(*win));
 	if (!win)
 		(ft_free_all_str(file), ft_error(MALLOC_FAILED, "malloc_window", NULL));
@@ -52,6 +42,16 @@ t_win	*ft_init(t_win *win, char **file)
 	win->mlx_win = mlx_new_window(win->mlx, WIDTH, HEIGHT, "CUB3D");
 	if (!win->mlx_win)
 		(ft_free_all_str(file), ft_error(MLX_WIN_FAILED, "mlx_win", win));
-	ft_add_all_image(win, file); //not done
+	ft_add_all_image(win, file);
 	return (ft_free_all_str(file), win);
+}
+
+t_win	*ft_parsing_manager(char *str_file)
+{
+	char	**file;
+
+	file = ft_set_file(str_file);
+	if (!ft_is_a_good_file(file))
+		(ft_free_all_str(file), ft_error(BAD_PARAMETERS, str_file, NULL));
+	return (ft_init(file));
 }
