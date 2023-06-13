@@ -6,7 +6,7 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 04:31:27 by jose              #+#    #+#             */
-/*   Updated: 2023/06/12 17:31:16 by jose             ###   ########.fr       */
+/*   Updated: 2023/06/13 23:48:45 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,9 @@ static char	**ft_init_map(char **file)
 	j = -1;
 	while (file[++i])
 		map[++j] = ft_strdup(file[i]);
+	i = (int)((ft_get_x_player(map) - SQ / 2) / SQ);
+	j = (int)((ft_get_y_player(map) - SQ / 2) / SQ);
+	map[i][j] = '0';
 	return (map);
 }
 
@@ -71,13 +74,13 @@ void	ft_init_all(t_win *win, char **file)
 	win->lst = NULL;
 	win->mlx = NULL;
 	win->mlx_win = NULL;
-	win->map = ft_init_map(file);
-	if (!win->map)
-		(ft_free_all_str(file), ft_error(MALLOC_FAILED, "m_fail", win));
 	win->color = ft_init_color(file);
 	if (!win->color)
 		(ft_free_all_str(file), ft_error(MALLOC_FAILED, "m_fail", win));
 	win->player = ft_init_player(file);
 	if (!win->player)
+		(ft_free_all_str(file), ft_error(MALLOC_FAILED, "m_fail", win));
+	win->map = ft_init_map(file);
+	if (!win->map)
 		(ft_free_all_str(file), ft_error(MALLOC_FAILED, "m_fail", win));
 }

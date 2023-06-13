@@ -6,7 +6,7 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 18:24:25 by jose              #+#    #+#             */
-/*   Updated: 2023/06/12 17:46:18 by jose             ###   ########.fr       */
+/*   Updated: 2023/06/13 22:26:49 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 # define WIDTH 800
 # define HEIGHT 600
 # define SQ 64
+# define FPS 1000
 
 /*	keybord's macro	*/
 # define KEY_ESC 65307
@@ -143,5 +144,8 @@ double	ft_get_angle_player(char **file);
 /*	event.c	*/
 int		ft_close_win(t_win *window);
 int		ft_event_manager(int keycode, t_win *win);
+
+/*	draw.c	*/
+int		ft_draw_window(void *win);
 
 #endif
