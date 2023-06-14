@@ -6,7 +6,7 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 04:31:27 by jose              #+#    #+#             */
-/*   Updated: 2023/06/13 23:48:45 by jose             ###   ########.fr       */
+/*   Updated: 2023/06/14 23:36:37 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,9 @@ static t_player	*ft_init_player(char **file)
 		return (NULL);
 	player->x = ft_get_x_player(file);
 	player->y = ft_get_y_player(file);
-	player->angle = ft_get_angle_player(file);
+	player->dirX = ft_get_angle_player(file) / 10;
+	player->dirY = ft_get_angle_player(file) % 10;
+	ft_get_plane(player);
 	return (player);
 }
 

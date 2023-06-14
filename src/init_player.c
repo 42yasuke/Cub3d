@@ -6,7 +6,7 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 17:04:03 by jose              #+#    #+#             */
-/*   Updated: 2023/06/12 14:52:35 by jose             ###   ########.fr       */
+/*   Updated: 2023/06/14 23:35:47 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,14 +62,34 @@ double	ft_get_angle_player(char **file)
 		while (file[i][++j])
 		{
 			if (file[i][j] == 'N')
-				return (90);
+				return (01);
 			else if (file[i][j] == 'E')
-				return (0);
+				return (10);
 			else if (file[i][j] == 'W')
-				return (180);
+				return (-10);
 			else if (file[i][j] == 'S')
-				return (270);
+				return (-01);
 		}
 	}
 	return (-1);
+}
+
+void	ft_get_plane(t_player *player)
+{
+	if (!player->dirX)
+	{
+		player->planeY = 0;
+		if (player->dirY > 0)
+			player->planeX = -1;
+		else
+			player->planeX = 1;
+	}
+	else
+	{
+		player->planeX = 0;
+		if (player->dirX > 0)
+			player->planeY = -1;
+		else
+			player->planeY = 1;
+	}
 }

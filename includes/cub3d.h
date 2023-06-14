@@ -6,7 +6,7 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 18:24:25 by jose              #+#    #+#             */
-/*   Updated: 2023/06/13 22:26:49 by jose             ###   ########.fr       */
+/*   Updated: 2023/06/14 23:36:57 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@
 # define HEIGHT 600
 # define SQ 64
 # define FPS 1000
+# define FOV 60
+# define DIST_CAM (WIDTH / 2) / tan(FOV / 2)
 
 /*	keybord's macro	*/
 # define KEY_ESC 65307
@@ -83,10 +85,22 @@ typedef struct s_color
 
 typedef struct s_player
 {
-	double	x;
-	double	y;
-	double	angle;
+	double	posX;
+	double	posY;
+	double	dirX;
+	double	dirY;
+	double	planeX;
+	double	planeY;	
 }	t_player;
+
+typedef struct s_ray
+{
+	double	cameraX;
+	double	rayPosX;
+	double	rayPosY;
+	double	rayDirX;
+	double	rayDirY;
+}	t_ray;
 
 typedef struct s_win
 {
@@ -140,6 +154,7 @@ void	ft_add_all_image(t_win *win, char **file);
 double	ft_get_x_player(char **file);
 double	ft_get_y_player(char **file);
 double	ft_get_angle_player(char **file);
+void	ft_get_plane(t_player *player);
 
 /*	event.c	*/
 int		ft_close_win(t_win *window);
@@ -147,5 +162,15 @@ int		ft_event_manager(int keycode, t_win *win);
 
 /*	draw.c	*/
 int		ft_draw_window(void *win);
+
+/*	draw_utils.c	*/
+char	ft_nbr_blue(int color);
+char	ft_nbr_green(int color);
+char	ft_nbr_red(int color);
+char	ft_nbr_alpha(int color);
+int		ft_bgr_into_int(int b, int g, int r);
+
+/*	raycasting.c	*/
+void	ft_raycast_manager(t_win *win);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 19:02:25 by jose              #+#    #+#             */
-/*   Updated: 2023/06/12 19:21:42 by jose             ###   ########.fr       */
+/*   Updated: 2023/06/14 00:45:46 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,27 +28,8 @@ static void	*ft_get_img(t_data_img *lst, int id)
 
 static void	ft_put_image_manager(t_win *win)
 {
-	int		i;
-	int		j;
-	void	*res;
-
-	i = 0;
-	while (win->map[i])
-	{
-		j = 0;
-		if (!i && !j)
-			mlx_put_image_to_window(win->mlx, win->mlx_win, \
-			win->lst->img->img, j * SQ, i * SQ);
-		while (win->map[i][j])
-		{
-			res = ft_get_img(win->lst, win->map[i][j]);
-			if (win->map[i][j] != '0' && res)
-				mlx_put_image_to_window(win->mlx, win->mlx_win, \
-				res, j * SQ, i * SQ);
-			j++;
-		}
-		i++;
-	}
+	ft_raycast_manager(win);
+	mlx_put_image_to_window(win->mlx, win->mlx_win, win->lst->img->img, 0, 0);
 }
 
 int	ft_draw_window(void *win)
