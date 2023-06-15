@@ -6,7 +6,7 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 18:24:25 by jose              #+#    #+#             */
-/*   Updated: 2023/06/14 23:36:57 by jose             ###   ########.fr       */
+/*   Updated: 2023/06/15 00:25:50 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@
 # define SQ 64
 # define FPS 1000
 # define FOV 60
-# define DIST_CAM (WIDTH / 2) / tan(FOV / 2)
 
 /*	keybord's macro	*/
 # define KEY_ESC 65307
@@ -90,7 +89,7 @@ typedef struct s_player
 	double	dirX;
 	double	dirY;
 	double	planeX;
-	double	planeY;	
+	double	planeY;
 }	t_player;
 
 typedef struct s_ray
@@ -100,6 +99,17 @@ typedef struct s_ray
 	double	rayPosY;
 	double	rayDirX;
 	double	rayDirY;
+	int		mapX;
+	int		mapY;
+	double	sideDistX;
+	double	sideDistY;
+	double	deltaDistX;
+	double	deltaDistY;
+	int		stepX;
+	int		stepY;
+	int		hit;
+	int		side;
+	double	perpWallDist;
 }	t_ray;
 
 typedef struct s_win
