@@ -6,7 +6,7 @@
 #    By: jose <jose@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/14 17:43:43 by jose              #+#    #+#              #
-#    Updated: 2023/06/14 00:38:03 by jose             ###   ########.fr        #
+#    Updated: 2023/06/15 19:04:38 by jose             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,8 @@ C_FILES =	main.c \
 			event.c \
 			draw.c \
 			draw_utils.c \
-			raycasting.c
+			raycasting.c \
+			raycasting_utils.c
 
 SRC = $(addprefix src/, $(C_FILES))
 

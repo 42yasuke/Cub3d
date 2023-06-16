@@ -6,7 +6,7 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 18:24:25 by jose              #+#    #+#             */
-/*   Updated: 2023/06/15 00:25:50 by jose             ###   ########.fr       */
+/*   Updated: 2023/06/16 04:58:33 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,15 @@
 # include <math.h>
 
 /*	window's macro	*/
-# define WIDTH 800
-# define HEIGHT 600
+# define WIDTH 1200
+# define HEIGHT 800
 # define SQ 64
 # define FPS 1000
 # define FOV 60
+# define MOVESPEED 0.03
+# define ROTSPEED 0.01
+# define TEX_HEIGHT 64
+# define TEX_WIDTH 64
 
 /*	keybord's macro	*/
 # define KEY_ESC 65307
@@ -110,6 +114,14 @@ typedef struct s_ray
 	int		hit;
 	int		side;
 	double	perpWallDist;
+	int		lineHeight;
+	int		drawStart;
+	int		drawEnd;
+	int		texy;
+	int		texx;
+	double	wallx;
+	double	step;
+	double	tex_pos;
 }	t_ray;
 
 typedef struct s_win
@@ -171,6 +183,7 @@ int		ft_close_win(t_win *window);
 int		ft_event_manager(int keycode, t_win *win);
 
 /*	draw.c	*/
+t_image	*ft_get_img(t_data_img *lst, int id);
 int		ft_draw_window(void *win);
 
 /*	draw_utils.c	*/
@@ -182,5 +195,11 @@ int		ft_bgr_into_int(int b, int g, int r);
 
 /*	raycasting.c	*/
 void	ft_raycast_manager(t_win *win);
+
+/*	raycasting_utils.c	*/
+void	ft_set_line_to_draw(t_ray *ray);
+void	ft_tex_calc(t_ray *ray);
+void	ft_px_put(t_win *win, int x, int y, int color);
+void	ft_tex_px_inc(t_win *win, t_ray *ray, int x);
 
 #endif

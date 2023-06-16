@@ -6,13 +6,13 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 19:02:25 by jose              #+#    #+#             */
-/*   Updated: 2023/06/14 00:45:46 by jose             ###   ########.fr       */
+/*   Updated: 2023/06/16 04:49:22 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	*ft_get_img(t_data_img *lst, int id)
+t_image	*ft_get_img(t_data_img *lst, int id)
 {
 	t_data_img	*tmp;
 
@@ -20,11 +20,13 @@ static void	*ft_get_img(t_data_img *lst, int id)
 	while (tmp)
 	{
 		if (tmp->img->id == id)
-			return (tmp->img->img);
+			return (tmp->img);
 		tmp = tmp->next;
 	}
 	return (NULL);
 }
+
+ft_draw_
 
 static void	ft_put_image_manager(t_win *win)
 {

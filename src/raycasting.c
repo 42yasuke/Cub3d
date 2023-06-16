@@ -6,7 +6,7 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 00:17:57 by jose              #+#    #+#             */
-/*   Updated: 2023/06/15 15:36:46 by jose             ###   ########.fr       */
+/*   Updated: 2023/06/16 05:03:39 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,11 @@ static void	ft_init_ray(t_ray *ray)
 	ray->hit = 0;
 	ray->side = 0;
 	ray->perpWallDist = 0;
+	ray->lineHeight = 0;
+	ray->drawStart = 0;
+	ray->drawEnd = 0;
+	ray->texx = 0;
+	ray->wallx = 0;
 }
 
 static t_ray	*ft_set_ray(t_win *win, int i)
@@ -49,8 +54,8 @@ static t_ray	*ft_set_ray(t_win *win, int i)
 	ray->rayDirY = pl->dirY + pl->planeY * ray->cameraX;
 	ray->mapX = (int)(ray->rayPosX);
 	ray->mapY = (int)(ray->rayPosY);
-	ray->deltaDistX = sqrt(1 + pow(ray->rayDirY, 2) / pow(ray->rayDirX, 2));
-	ray->deltaDistY = sqrt(1 + pow(ray->rayDirX, 2) / pow(ray->rayDirY, 2));
+	ray->deltaDistX = fabs(1 / ray->rayDirX);
+	ray->deltaDistY = fabs(1 / ray->rayDirY);
 	return (ray);
 }
 
@@ -103,6 +108,18 @@ static void	ft_dda(t_ray *ray, char **map)
 		ray->perpWallDist = (ray->sideDistY - ray->deltaDistY);
 }
 
+static void	ft_draw_cf(t_win *win, t_ray *ray, int x)
+{
+	int	y;
+
+	y = -1;
+	while (++y < ray->drawStart)
+		ft_px_put(win, x, y, win->color->ceiling);
+	y = ray->drawEnd - 1;
+	while (++y < HEIGHT - 1)
+		ft_px_put(win, x, y, win->color->floor);
+}
+
 void	ft_raycast_manager(t_win *win)
 {
 	int		i;
@@ -114,6 +131,10 @@ void	ft_raycast_manager(t_win *win)
 		ray = ft_set_ray(win, i);
 		ft_calculate_step_and_initial_sideDist(ray);
 		ft_dda(ray, win->map);
+		ft_set_line_to_draw(ray);
+		ft_tex_calc(ray);
+		ft_tex_px_inc(win, ray, i);
+		ft_draw_cf(win, ray, x);
 		free(ray);
 	}
 }
