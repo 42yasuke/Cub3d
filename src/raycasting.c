@@ -6,7 +6,7 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 00:17:57 by jose              #+#    #+#             */
-/*   Updated: 2023/06/16 05:03:39 by jose             ###   ########.fr       */
+/*   Updated: 2023/06/16 13:19:50 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,10 @@ static void	ft_init_ray(t_ray *ray)
 	ray->drawStart = 0;
 	ray->drawEnd = 0;
 	ray->texx = 0;
+	ray->texy = 0;
 	ray->wallx = 0;
+	ray->step = 0;
+	ray->tex_pos = 0;
 }
 
 static t_ray	*ft_set_ray(t_win *win, int i)
@@ -47,7 +50,7 @@ static t_ray	*ft_set_ray(t_win *win, int i)
 	if (!ray)
 		ft_error(MALLOC_FAILED, M_F, win);
 	ft_init_ray(ray);
-	ray->cameraX = (2 * i / WIDTH) - 1;
+	ray->cameraX = 2 * i / (double)WIDTH - 1;
 	ray->rayPosX = pl->posX;
 	ray->rayPosY = pl->posY;
 	ray->rayDirX = pl->dirX + pl->planeX * ray->cameraX;
@@ -85,7 +88,7 @@ static void	ft_calculate_step_and_initial_sideDist(t_ray *ray)
 
 static void	ft_dda(t_ray *ray, char **map)
 {
-	while (ray->hit == 0)
+	while (!ray->hit)
 	{
 		if (ray->sideDistX < ray->sideDistY)
 		{
@@ -111,13 +114,19 @@ static void	ft_dda(t_ray *ray, char **map)
 static void	ft_draw_cf(t_win *win, t_ray *ray, int x)
 {
 	int	y;
+	int	*tab_c;
+	int	color;
 
 	y = -1;
+	tab_c = win->color->ceiling;
+	color = ft_bgr_into_int(tab_c[2], tab_c[1], tab_c[0]);
 	while (++y < ray->drawStart)
-		ft_px_put(win, x, y, win->color->ceiling);
+		ft_px_put(win, x, y, color);
+	tab_c = win->color->floor;
+	color = ft_bgr_into_int(tab_c[2], tab_c[1], tab_c[0]);
 	y = ray->drawEnd - 1;
 	while (++y < HEIGHT - 1)
-		ft_px_put(win, x, y, win->color->floor);
+		ft_px_put(win, x, y, color);
 }
 
 void	ft_raycast_manager(t_win *win)
@@ -134,7 +143,7 @@ void	ft_raycast_manager(t_win *win)
 		ft_set_line_to_draw(ray);
 		ft_tex_calc(ray);
 		ft_tex_px_inc(win, ray, i);
-		ft_draw_cf(win, ray, x);
+		ft_draw_cf(win, ray, i);
 		free(ray);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 18:24:25 by jose              #+#    #+#             */
-/*   Updated: 2023/06/16 04:58:33 by jose             ###   ########.fr       */
+/*   Updated: 2023/06/16 05:30:12 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,14 @@
 # define SOUTH 3
 # define EAST 4
 # define WEST 5
+
+/*	color's macro	*/
+# define WHITE 0xFFFFFF
+# define BLACK 0x000000
+# define RED 0x0000FF
+# define GREEN 0x00FF00
+# define BLUE 0xFF0000
+# define ALPHA 0x000000
 
 /*	error's macro*/
 # define BAD_PARAMETERS 1
@@ -175,7 +183,7 @@ void	ft_add_all_image(t_win *win, char **file);
 /*	ft_init_player.c	*/
 double	ft_get_x_player(char **file);
 double	ft_get_y_player(char **file);
-double	ft_get_angle_player(char **file);
+int		ft_get_angle_player(char **file);
 void	ft_get_plane(t_player *player);
 
 /*	event.c	*/

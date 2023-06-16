@@ -6,7 +6,7 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 19:02:25 by jose              #+#    #+#             */
-/*   Updated: 2023/06/16 04:49:22 by jose             ###   ########.fr       */
+/*   Updated: 2023/06/16 05:27:54 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ t_image	*ft_get_img(t_data_img *lst, int id)
 	}
 	return (NULL);
 }
-
-ft_draw_
 
 static void	ft_put_image_manager(t_win *win)
 {

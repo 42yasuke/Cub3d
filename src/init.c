@@ -6,7 +6,7 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 04:31:27 by jose              #+#    #+#             */
-/*   Updated: 2023/06/14 23:36:37 by jose             ###   ########.fr       */
+/*   Updated: 2023/06/16 16:13:09 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,6 @@ static char	**ft_init_map(char **file)
 	j = -1;
 	while (file[++i])
 		map[++j] = ft_strdup(file[i]);
-	i = (int)((ft_get_x_player(map) - SQ / 2) / SQ);
-	j = (int)((ft_get_y_player(map) - SQ / 2) / SQ);
-	map[i][j] = '0';
 	return (map);
 }
 
@@ -56,15 +53,31 @@ static t_color	*ft_init_color(char **file)
 	return (color);
 }
 
-static t_player	*ft_init_player(char **file)
+static t_player	*ft_init_all_to_zero(void)
 {
 	t_player	*player;
 
 	player = malloc(sizeof(*player));
 	if (!player)
 		return (NULL);
-	player->x = ft_get_x_player(file);
-	player->y = ft_get_y_player(file);
+	player->dirX = 0;
+	player->dirY = 0;
+	player->planeX = 0;
+	player->planeY = 0;
+	player->posX = 0;
+	player->posY = 0;
+	return (player);
+}
+
+static t_player	*ft_init_player(char **file)
+{
+	t_player	*player;
+
+	player = ft_init_all_to_zero();
+	if (!player)
+		return (NULL);
+	player->posX = ft_get_x_player(file);
+	player->posY = ft_get_y_player(file);
 	player->dirX = ft_get_angle_player(file) / 10;
 	player->dirY = ft_get_angle_player(file) % 10;
 	ft_get_plane(player);
@@ -79,10 +92,11 @@ void	ft_init_all(t_win *win, char **file)
 	win->color = ft_init_color(file);
 	if (!win->color)
 		(ft_free_all_str(file), ft_error(MALLOC_FAILED, "m_fail", win));
-	win->player = ft_init_player(file);
-	if (!win->player)
-		(ft_free_all_str(file), ft_error(MALLOC_FAILED, "m_fail", win));
 	win->map = ft_init_map(file);
 	if (!win->map)
 		(ft_free_all_str(file), ft_error(MALLOC_FAILED, "m_fail", win));
+	win->player = ft_init_player(win->map);
+	if (!win->player)
+		(ft_free_all_str(file), ft_error(MALLOC_FAILED, "m_fail", win));
+	win->map[(int)win->player->posX][(int)win->player->posY] = '0';
 }
