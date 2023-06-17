@@ -6,7 +6,7 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 17:43:24 by jose              #+#    #+#             */
-/*   Updated: 2023/06/18 00:36:38 by jose             ###   ########.fr       */
+/*   Updated: 2023/06/18 00:52:33 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ static void	ft_move_manager(t_win *win, int keycode)
 	if (keycode == KEY_S)
 		ft_move_back(win->player, win->map);
 	if (keycode == KEY_LEFT)
-		ft_look_left(win->player);
+		ft_turn(win->player, -1 * ROTSPEED);
 	if (keycode == KEY_RIGHT)
-		ft_look_right(win->player);
+		ft_turn(win->player, ROTSPEED);
 }
 
 int	ft_event_manager(int keycode, t_win *win)

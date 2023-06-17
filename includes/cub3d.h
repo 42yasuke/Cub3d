@@ -6,7 +6,7 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 18:24:25 by jose              #+#    #+#             */
-/*   Updated: 2023/06/18 00:38:03 by jose             ###   ########.fr       */
+/*   Updated: 2023/06/18 00:53:37 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -223,7 +223,6 @@ void	ft_move_right(t_player *player, char **map);
 void	ft_move_back(t_player *player, char **map);
 
 /*	rotate.c	*/
-void	ft_look_left(t_player *player);
-void	ft_look_right(t_player *player);
+void	ft_turn(t_player *player, double rspeed);
 
 #endif
