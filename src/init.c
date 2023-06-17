@@ -6,7 +6,7 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 04:31:27 by jose              #+#    #+#             */
-/*   Updated: 2023/06/16 16:13:09 by jose             ###   ########.fr       */
+/*   Updated: 2023/06/17 20:19:42 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,10 @@ static t_color	*ft_init_color(char **file)
 {
 	int		i;
 	t_color	*color;
+	int		j;
 
 	i = -1;
+	j = 0;
 	color = malloc(sizeof(*color));
 	if (!color)
 		return (NULL);
@@ -48,8 +50,14 @@ static t_color	*ft_init_color(char **file)
 	color->floor = malloc(sizeof(int) * 3);
 	if (!color->floor)
 		return (free(color->ceiling), free(color), NULL);
-	while (file[++i] && i < 2)
-		ft_get_ceilling_and_floor_color(file[i], color);
+	while (file[++i] && j < 2)
+	{
+		if (!ft_strncmp("F", file[i], 1) || !ft_strncmp("C", file[i], 1))
+		{
+			ft_get_ceilling_and_floor_color(file[i], color);
+			j++;
+		}
+	}
 	return (color);
 }
 

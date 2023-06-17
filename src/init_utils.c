@@ -6,7 +6,7 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 13:46:44 by jose              #+#    #+#             */
-/*   Updated: 2023/06/12 17:35:50 by jose             ###   ########.fr       */
+/*   Updated: 2023/06/17 20:20:38 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	ft_get_ceilling_and_floor_color(char *str, t_color *color)
 		return (ft_free_all_str(line), ft_free_color(color));
 	while (line2[++i])
 	{
-		if (line[1][0] == 'F')
+		if (line[0][0] == 'F')
 			color->floor[i] = ft_atoi(line2[i]);
 		else
 			color->ceiling[i] = ft_atoi(line2[i]);

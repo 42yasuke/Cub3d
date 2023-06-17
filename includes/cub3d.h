@@ -6,7 +6,7 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 18:24:25 by jose              #+#    #+#             */
-/*   Updated: 2023/06/16 05:30:12 by jose             ###   ########.fr       */
+/*   Updated: 2023/06/17 19:29:43 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@
 # include <math.h>
 
 /*	window's macro	*/
-# define WIDTH 1200
-# define HEIGHT 800
+# define WIDTH 800
+# define HEIGHT 600
 # define SQ 64
 # define FPS 1000
-# define FOV 60
+# define FOV 75
 # define MOVESPEED 0.03
 # define ROTSPEED 0.01
 # define TEX_HEIGHT 64

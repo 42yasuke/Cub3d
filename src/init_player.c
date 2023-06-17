@@ -6,7 +6,7 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 17:04:03 by jose              #+#    #+#             */
-/*   Updated: 2023/06/16 16:10:53 by jose             ###   ########.fr       */
+/*   Updated: 2023/06/17 22:01:34 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ double	ft_get_x_player(char **map)
 		while (map[i][++j])
 		{
 			if (map[i][j] == 'N' || map[i][j] == 'S')
-				return ((double)i + 0.5);
+				return ((double)i - 0.5); //not done
 			if (map[i][j] == 'E' || map[i][j] == 'W')
-				return ((double)i + 0.5);
+				return ((double)i - 0.5);
 		}
 	}
 	return (-1);
@@ -44,9 +44,9 @@ double	ft_get_y_player(char **map)
 		while (map[i][++j])
 		{
 			if (map[i][j] == 'N' || map[i][j] == 'S')
-				return ((double)j + 0.5);
+				return ((double)j - 0.5);
 			if (map[i][j] == 'E' || map[i][j] == 'W')
-				return ((double)j + 0.5);
+				return ((double)j - 0.5);
 		}
 	}
 	return (-1);

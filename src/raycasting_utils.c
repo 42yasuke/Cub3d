@@ -6,7 +6,7 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 19:03:28 by jose              #+#    #+#             */
-/*   Updated: 2023/06/16 13:29:56 by jose             ###   ########.fr       */
+/*   Updated: 2023/06/17 19:45:33 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,19 +32,37 @@ void	ft_tex_calc(t_ray *ray)
 	ray->wallx -= floor((ray->wallx));
 	ray->texx = (int)((ray->wallx) * (double)TEX_WIDTH);
 	if (ray->side == 0 && ray->rayDirX > 0)
-		ray->texx = TEX_WIDTH - (ray->texx) - 1;
+		ray->texx = TEX_WIDTH - ray->texx - 1;
 	if (ray->side == 1 && ray->rayDirY < 0)
-		ray->texx = TEX_WIDTH - (ray->texx) - 1;
+		ray->texx = TEX_WIDTH - ray->texx - 1;
+}
+
+static void	ft_draw_pixel_suite(t_win *win, int coord, int color)
+{
+	char	*addr;
+	t_image	*img;
+
+	img = win->lst->img;
+	addr = img->addr;
+	addr[(coord / 1000) * (img->bpp / 8) + (coord % 1000) \
+	* img->size_line + 0] = ft_nbr_blue(color);
+	addr[(coord / 1000) * (img->bpp / 8) + (coord % 1000) \
+	* img->size_line + 1] = ft_nbr_green(color);
+	addr[(coord / 1000) * (img->bpp / 8) + (coord % 1000) \
+	* img->size_line + 2] = ft_nbr_red(color);
+	addr[(coord / 1000) * (img->bpp / 8) + (coord % 1000) \
+	* img->size_line + 3] = 0;
 }
 
 void	ft_px_put(t_win *win, int x, int y, int color)
 {
-	char	*dst;
-	t_image	*img;
+	//char	*dst;
+	//t_image	*img;
 
-	img = ft_get_img(win->lst, BACKGROUND);
+	return (ft_draw_pixel_suite(win, x * 1000 + y, color));
+	/*img = ft_get_img(win->lst, BACKGROUND);
 	dst = img->addr + (y * img->size_line + x * (img->bpp / 8));
-	*(unsigned int *)dst = color;
+	*(unsigned int *)dst = color;*/
 }
 
 static unsigned int	ft_px_ext(t_win *win, int id, int x, int y)
@@ -64,7 +82,7 @@ void	ft_tex_px_inc(t_win *win, t_ray *ray, int x)
 	int	y;
 
 	ray->step = 1.0 * TEX_HEIGHT / (ray->lineHeight);
-	ray->tex_pos = ((ray->drawStart) - HEIGHT / 2 + ray->lineHeight / 2) * ray->step;
+	ray->tex_pos = (ray->drawStart - HEIGHT / 2 + ray->lineHeight / 2) * ray->step;
 	y = ray->drawStart - 1;
 	while (++y < ray->drawEnd)
 	{
