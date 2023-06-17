@@ -6,39 +6,11 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 00:17:57 by jose              #+#    #+#             */
-/*   Updated: 2023/06/17 20:25:23 by jose             ###   ########.fr       */
+/*   Updated: 2023/06/17 23:02:45 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-static void	ft_init_ray(t_ray *ray)
-{
-	ray->cameraX = 0;
-	ray->rayPosX = 0;
-	ray->rayPosY = 0;
-	ray->rayDirX = 0;
-	ray->rayDirY = 0;
-	ray->mapX = 0;
-	ray->mapY = 0;
-	ray->sideDistX = 0;
-	ray->sideDistY = 0;
-	ray->deltaDistX = 0;
-	ray->deltaDistY = 0;
-	ray->stepX = 0;
-	ray->stepY = 0;
-	ray->hit = 0;
-	ray->side = 0;
-	ray->perpWallDist = 0;
-	ray->lineHeight = 0;
-	ray->drawStart = 0;
-	ray->drawEnd = 0;
-	ray->texx = 0;
-	ray->texy = 0;
-	ray->wallx = 0;
-	ray->step = 0;
-	ray->tex_pos = 0;
-}
 
 static t_ray	*ft_set_ray(t_win *win, int i)
 {
@@ -50,39 +22,39 @@ static t_ray	*ft_set_ray(t_win *win, int i)
 	if (!ray)
 		ft_error(MALLOC_FAILED, M_F, win);
 	ft_init_ray(ray);
-	ray->cameraX = 2 * i / (double)WIDTH - 1;
-	ray->rayPosX = pl->posX;
-	ray->rayPosY = pl->posY;
-	ray->rayDirX = pl->dirX + pl->planeX * ray->cameraX;
-	ray->rayDirY = pl->dirY + pl->planeY * ray->cameraX;
-	ray->mapX = (int)(ray->rayPosX);
-	ray->mapY = (int)(ray->rayPosY);
-	ray->deltaDistX = fabs(1 / ray->rayDirX);
-	ray->deltaDistY = fabs(1 / ray->rayDirY);
+	ray->camerax = 2 * i / (double)WIDTH - 1;
+	ray->rayposx = pl->posx;
+	ray->rayposy = pl->posy;
+	ray->raydirx = pl->dirx + pl->planex * ray->camerax;
+	ray->raydiry = pl->diry + pl->planey * ray->camerax;
+	ray->mapx = (int)(ray->rayposx);
+	ray->mapy = (int)(ray->rayposy);
+	ray->deltadistx = fabs(1 / ray->raydirx);
+	ray->deltadisty = fabs(1 / ray->raydiry);
 	return (ray);
 }
 
-static void	ft_calculate_step_and_initial_sideDist(t_ray *ray)
+static void	ft_calculate_step_and_initial_sidedist(t_ray *ray)
 {
-	if (ray->rayDirX < 0)
+	if (ray->raydirx < 0)
 	{
-		ray->stepX = -1;
-		ray->sideDistX = (ray->rayPosX - ray->mapX) * ray->deltaDistX;
-	} 
-	else
-	{
-		ray->stepX = 1;
-		ray->sideDistX = (ray->mapX + 1.0 - ray->rayPosX) * ray->deltaDistX;
-	}
-	if (ray->rayDirY < 0)
-	{
-		ray->stepY = -1;
-		ray->sideDistY = (ray->rayPosY - ray->mapY) * ray->deltaDistY;
+		ray->stepx = -1;
+		ray->sidedistx = (ray->rayposx - ray->mapx) * ray->deltadistx;
 	}
 	else
 	{
-		ray->stepY = 1;
-		ray->sideDistY = (ray->mapY + 1.0 - ray->rayPosY) * ray->deltaDistY;
+		ray->stepx = 1;
+		ray->sidedistx = (ray->mapx + 1.0 - ray->rayposx) * ray->deltadistx;
+	}
+	if (ray->raydiry < 0)
+	{
+		ray->stepy = -1;
+		ray->sidedisty = (ray->rayposy - ray->mapy) * ray->deltadisty;
+	}
+	else
+	{
+		ray->stepy = 1;
+		ray->sidedisty = (ray->mapy + 1.0 - ray->rayposy) * ray->deltadisty;
 	}
 }
 
@@ -90,25 +62,25 @@ static void	ft_dda(t_ray *ray, char **map)
 {
 	while (!ray->hit)
 	{
-		if (ray->sideDistX < ray->sideDistY)
+		if (ray->sidedistx < ray->sidedisty)
 		{
-			ray->sideDistX += ray->deltaDistX;
-			ray->mapX += ray->stepX;
+			ray->sidedistx += ray->deltadistx;
+			ray->mapx += ray->stepx;
 			ray->side = 0;
 		}
 		else
 		{
-			ray->sideDistY += ray->deltaDistY;
-			ray->mapY += ray->stepY;
+			ray->sidedisty += ray->deltadisty;
+			ray->mapy += ray->stepy;
 			ray->side = 1;
 		}
-		if (map[ray->mapX][ray->mapY] == '1')
+		if (map[ray->mapx][ray->mapy] == '1')
 			ray->hit = 1;
 	}
 	if (ray->side == 0)
-		ray->perpWallDist = (ray->sideDistX - ray->deltaDistX);
+		ray->perpwalldist = (ray->sidedistx - ray->deltadistx);
 	else
-		ray->perpWallDist = (ray->sideDistY - ray->deltaDistY);
+		ray->perpwalldist = (ray->sidedisty - ray->deltadisty);
 }
 
 static void	ft_draw_cf(t_win *win, t_ray *ray, int x)
@@ -120,13 +92,13 @@ static void	ft_draw_cf(t_win *win, t_ray *ray, int x)
 	y = -1;
 	tab_c = win->color->ceiling;
 	color = ft_bgr_into_int(tab_c[2], tab_c[1], tab_c[0]);
-	while (++y < ray->drawStart)
-		ft_px_put(win, x, y, color);
+	while (++y < ray->drawstart)
+		ft_draw_pix(win, x * 1000 + y, color);
 	tab_c = win->color->floor;
 	color = ft_bgr_into_int(tab_c[2], tab_c[1], tab_c[0]);
-	y = ray->drawEnd - 1;
+	y = ray->drawend - 1;
 	while (++y < HEIGHT - 1)
-		ft_px_put(win, x, y, color);
+		ft_draw_pix(win, x * 1000 + y, color);
 }
 
 void	ft_raycast_manager(t_win *win)
@@ -138,7 +110,7 @@ void	ft_raycast_manager(t_win *win)
 	while (++i < WIDTH)
 	{
 		ray = ft_set_ray(win, i);
-		ft_calculate_step_and_initial_sideDist(ray);
+		ft_calculate_step_and_initial_sidedist(ray);
 		ft_dda(ray, win->map);
 		ft_set_line_to_draw(ray);
 		ft_tex_calc(ray);

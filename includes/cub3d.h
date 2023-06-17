@@ -6,7 +6,7 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 18:24:25 by jose              #+#    #+#             */
-/*   Updated: 2023/06/17 19:29:43 by jose             ###   ########.fr       */
+/*   Updated: 2023/06/17 23:06:49 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 /*	window's macro	*/
 # define WIDTH 800
 # define HEIGHT 600
-# define SQ 64
+# define M 1000
 # define FPS 1000
 # define FOV 75
 # define MOVESPEED 0.03
@@ -96,35 +96,35 @@ typedef struct s_color
 
 typedef struct s_player
 {
-	double	posX;
-	double	posY;
-	double	dirX;
-	double	dirY;
-	double	planeX;
-	double	planeY;
+	double	posx;
+	double	posy;
+	double	dirx;
+	double	diry;
+	double	planex;
+	double	planey;
 }	t_player;
 
 typedef struct s_ray
 {
-	double	cameraX;
-	double	rayPosX;
-	double	rayPosY;
-	double	rayDirX;
-	double	rayDirY;
-	int		mapX;
-	int		mapY;
-	double	sideDistX;
-	double	sideDistY;
-	double	deltaDistX;
-	double	deltaDistY;
-	int		stepX;
-	int		stepY;
+	double	camerax;
+	double	rayposx;
+	double	rayposy;
+	double	raydirx;
+	double	raydiry;
+	int		mapx;
+	int		mapy;
+	double	sidedistx;
+	double	sidedisty;
+	double	deltadistx;
+	double	deltadisty;
+	int		stepx;
+	int		stepy;
 	int		hit;
 	int		side;
-	double	perpWallDist;
-	int		lineHeight;
-	int		drawStart;
-	int		drawEnd;
+	double	perpwalldist;
+	int		lineheight;
+	int		drawstart;
+	int		drawend;
 	int		texy;
 	int		texx;
 	double	wallx;
@@ -207,7 +207,10 @@ void	ft_raycast_manager(t_win *win);
 /*	raycasting_utils.c	*/
 void	ft_set_line_to_draw(t_ray *ray);
 void	ft_tex_calc(t_ray *ray);
-void	ft_px_put(t_win *win, int x, int y, int color);
+void	ft_draw_pix(t_win *win, int coord, int color);
 void	ft_tex_px_inc(t_win *win, t_ray *ray, int x);
+
+/*	raycasting_utils2.c	*/
+void	ft_init_ray(t_ray *ray);
 
 #endif

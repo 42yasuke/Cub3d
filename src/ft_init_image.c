@@ -6,7 +6,7 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 16:15:35 by jose              #+#    #+#             */
-/*   Updated: 2023/06/17 18:44:02 by jose             ###   ########.fr       */
+/*   Updated: 2023/06/17 23:01:35 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,28 +47,12 @@ static void	ft_add_background(t_win *win)
 	if (!win->lst->img)
 		ft_error(MALLOC_FAILED, "malloc_failed", win);
 	win->lst->img->img = mlx_new_image(win->mlx, WIDTH, HEIGHT);
-	/*
-	mlx_xpm_file_to_image(win->mlx, \
-	"/home/jose/C/Cub3d/image/noir.xpm", &win->lst->img->width, &win->lst->img->height);
-	*/
 	if (!win->lst->img->img)
 		ft_error(IMAGE_NOT_F, "image_not_found", win);
 	win->lst->img->addr = mlx_get_data_addr(win->lst->img->img, \
 	&win->lst->img->bpp, &win->lst->img->size_line, &win->lst->img->endian);
 	win->lst->img->id = BACKGROUND;
 }
-
-/*int	create_image(t_mlx *map_data, t_img_data *img)
-{
-	img->img = mlx_new_image(map_data->mlx, WIDTH, HEIGHT);
-	if (!(img->img))
-		return (0);
-	img->addr = mlx_get_data_addr(img->img, &img->bits_per_pixel, \
-		&img->line_length, &img->endian);
-	if (!(img->addr))
-		return (0);
-	return (1);
-}*/
 
 static char	*ft_get_image_path(char **file, char *str)
 {

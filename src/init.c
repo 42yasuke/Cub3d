@@ -6,7 +6,7 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 04:31:27 by jose              #+#    #+#             */
-/*   Updated: 2023/06/17 20:19:42 by jose             ###   ########.fr       */
+/*   Updated: 2023/06/17 22:49:40 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,12 +68,12 @@ static t_player	*ft_init_all_to_zero(void)
 	player = malloc(sizeof(*player));
 	if (!player)
 		return (NULL);
-	player->dirX = 0;
-	player->dirY = 0;
-	player->planeX = 0;
-	player->planeY = 0;
-	player->posX = 0;
-	player->posY = 0;
+	player->dirx = 0;
+	player->diry = 0;
+	player->planex = 0;
+	player->planey = 0;
+	player->posx = 0;
+	player->posy = 0;
 	return (player);
 }
 
@@ -84,10 +84,10 @@ static t_player	*ft_init_player(char **file)
 	player = ft_init_all_to_zero();
 	if (!player)
 		return (NULL);
-	player->posX = ft_get_x_player(file);
-	player->posY = ft_get_y_player(file);
-	player->dirX = ft_get_angle_player(file) / 10;
-	player->dirY = ft_get_angle_player(file) % 10;
+	player->posx = ft_get_x_player(file);
+	player->posy = ft_get_y_player(file);
+	player->dirx = ft_get_angle_player(file) / 10;
+	player->diry = ft_get_angle_player(file) % 10;
 	ft_get_plane(player);
 	return (player);
 }
@@ -106,5 +106,5 @@ void	ft_init_all(t_win *win, char **file)
 	win->player = ft_init_player(win->map);
 	if (!win->player)
 		(ft_free_all_str(file), ft_error(MALLOC_FAILED, "m_fail", win));
-	win->map[(int)win->player->posX][(int)win->player->posY] = '0';
+	win->map[(int)win->player->posx][(int)win->player->posy] = '0';
 }
