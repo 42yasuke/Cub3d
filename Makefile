@@ -6,7 +6,7 @@
 #    By: jose <jose@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/14 17:43:43 by jose              #+#    #+#              #
-#    Updated: 2023/06/17 23:09:48 by jose             ###   ########.fr        #
+#    Updated: 2023/06/17 23:35:17 by jose             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,9 @@ C_FILES =	main.c \
 			draw_utils.c \
 			raycasting.c \
 			raycasting_utils.c \
-			raycasting_utils2.c
+			raycasting_utils2.c \
+			move.c \
+			rotate.c
 
 SRC = $(addprefix src/, $(C_FILES))
 

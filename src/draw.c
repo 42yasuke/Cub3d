@@ -6,7 +6,7 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 19:02:25 by jose              #+#    #+#             */
-/*   Updated: 2023/06/16 05:27:54 by jose             ###   ########.fr       */
+/*   Updated: 2023/06/18 00:37:45 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_image	*ft_get_img(t_data_img *lst, int id)
 	return (NULL);
 }
 
-static void	ft_put_image_manager(t_win *win)
+void	ft_put_image_manager(t_win *win)
 {
 	ft_raycast_manager(win);
 	mlx_put_image_to_window(win->mlx, win->mlx_win, win->lst->img->img, 0, 0);

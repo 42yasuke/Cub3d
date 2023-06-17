@@ -6,7 +6,7 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 18:24:25 by jose              #+#    #+#             */
-/*   Updated: 2023/06/17 23:06:49 by jose             ###   ########.fr       */
+/*   Updated: 2023/06/18 00:38:03 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@
 # define KEY_Q 97
 # define KEY_D 100
 # define KEY_S 115
+# define KEY_LEFT 65361
+# define KEY_RIGHT 65363
 
 /*	mouse's macro	*/
 # define CROSS_BUTTON 1840902816
@@ -193,6 +195,7 @@ int		ft_event_manager(int keycode, t_win *win);
 /*	draw.c	*/
 t_image	*ft_get_img(t_data_img *lst, int id);
 int		ft_draw_window(void *win);
+void	ft_put_image_manager(t_win *win);
 
 /*	draw_utils.c	*/
 char	ft_nbr_blue(int color);
@@ -212,5 +215,15 @@ void	ft_tex_px_inc(t_win *win, t_ray *ray, int x);
 
 /*	raycasting_utils2.c	*/
 void	ft_init_ray(t_ray *ray);
+
+/*	move.c	*/
+void	ft_move_forward(t_player *player, char **map);
+void	ft_move_left(t_player *player, char **map);
+void	ft_move_right(t_player *player, char **map);
+void	ft_move_back(t_player *player, char **map);
+
+/*	rotate.c	*/
+void	ft_look_left(t_player *player);
+void	ft_look_right(t_player *player);
 
 #endif
