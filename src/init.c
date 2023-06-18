@@ -6,7 +6,7 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 04:31:27 by jose              #+#    #+#             */
-/*   Updated: 2023/06/17 22:49:40 by jose             ###   ########.fr       */
+/*   Updated: 2023/06/18 03:48:39 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,5 +106,5 @@ void	ft_init_all(t_win *win, char **file)
 	win->player = ft_init_player(win->map);
 	if (!win->player)
 		(ft_free_all_str(file), ft_error(MALLOC_FAILED, "m_fail", win));
-	win->map[(int)win->player->posx][(int)win->player->posy] = '0';
+	win->map[(int)(win->player->posx)][(int)(win->player->posy)] = '0';
 }

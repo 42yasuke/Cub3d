@@ -6,7 +6,7 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 18:24:25 by jose              #+#    #+#             */
-/*   Updated: 2023/06/18 00:53:37 by jose             ###   ########.fr       */
+/*   Updated: 2023/06/18 02:07:13 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 # define HEIGHT 600
 # define M 1000
 # define FPS 1000
-# define FOV 75
+# define FOV 60
 # define MOVESPEED 0.03
 # define ROTSPEED 0.01
 # define TEX_HEIGHT 64
