@@ -93,8 +93,8 @@ static int	ft_is_good_map(char **file)
 int	ft_is_a_good_file(char **file)
 {
 	if (!ft_good_texture(file))
-		return (false);
+		return (ft_printf("Error: bad textures\n"), false);
 	if (!ft_is_good_map(file))
-		return (false);
+		return (ft_printf("Error: bad map\n"), false);
 	return (true);
 }

@@ -6,7 +6,7 @@
 #    By: jose <jose@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/14 17:43:43 by jose              #+#    #+#              #
-#    Updated: 2023/06/17 23:35:17 by jose             ###   ########.fr        #
+#    Updated: 2023/10/28 10:12:41 by jose             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -74,5 +74,8 @@ fclean : clean
 		$(RM) $(NAME) $(SLB) libft.a libmlx.a .mandatory .bonus
 
 re : fclean all
+
+prog : all clean
+		clear
 
 .PHONY : all fclean clean re

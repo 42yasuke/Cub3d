@@ -23,7 +23,8 @@ static int	ft_research_bad_texture(char **file)
 		line = ft_split(file[i], ' ');
 		if (!line)
 			ft_error(MALLOC_FAILED, "line : malloc failed", NULL);
-		if (ft_strncmp(line[0], "NO", 2) && \
+		if (ft_strlen(line[0]) > 0 && \
+			ft_strncmp(line[0], "NO", 2) && \
 			ft_strncmp(line[0], "SO", 2) && \
 			ft_strncmp(line[0], "EA", 2) && \
 			ft_strncmp(line[0], "WE", 2) && \

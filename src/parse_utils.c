@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/07 23:40:09 by marvin            #+#    #+#             */
-/*   Updated: 2023/06/07 23:40:09 by marvin           ###   ########.fr       */
+/*   Created: 2023/10/30 16:21:01 by jose              #+#    #+#             */
+/*   Updated: 2023/10/30 16:21:01 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,7 @@ static char	**ft_init_file(char *str_file)
 	line = get_next_line(fd);
 	while (line)
 	{
-		if (line[0] != '\n')
-			nbr_str++;
+		nbr_str++;
 		free(line);
 		line = get_next_line(fd);
 	}
@@ -44,7 +43,10 @@ static void	ft_cpy(char **file, int *nbr_str, char *line)
 {
 	char	*str;
 
-	file[nbr_str[0]] = ft_strdup(line);
+	if (!ft_strncmp(line, "\n", ft_strlen(line)))
+		file[nbr_str[0]] = ft_strdup(REPLACE);
+	else
+		file[nbr_str[0]] = ft_strdup(line);
 	if (!file[nbr_str[0]])
 	{
 		free(line);
@@ -72,17 +74,16 @@ char	**ft_set_file(char *str_file)
 	line = get_next_line(fd);
 	while (line)
 	{
-		if (line[0] != '\n')
-			ft_cpy(file, &nbr_str, line);
+		ft_cpy(file, &nbr_str, line);
 		free(line);
 		line = get_next_line(fd);
 	}
-	close(fd);
-	return (file);
+	return (close(fd), file);
 }
 
 int	ft_good_texture(char **file)
 {
+	(void)file;
 	if (!ft_research_texture("NO", file))
 		return (false);
 	if (!ft_research_texture("SO", file))

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jralph <jralph@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 15:10:16 by jralph            #+#    #+#             */
-/*   Updated: 2023/01/20 14:50:10 by jralph           ###   ########.fr       */
+/*   Updated: 2023/10/28 10:51:24 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static void	ft_loop(char **stash, int fd)
 	buf = malloc(sizeof(*buf) * (BUFFER_SIZE + 1));
 	if (!buf)
 		return ;
-	while (!ft_strchr(*stash, '\n') && len == BUFFER_SIZE)
+	while ((!ft_strchr(*stash, '\n') && len == BUFFER_SIZE))
 	{
 		len = read(fd, buf, BUFFER_SIZE);
 		if (len <= 0)
@@ -99,15 +99,12 @@ char	*get_next_line(int fd)
 	{
 		lines = ft_getlines(stash, ft_strchr(stash, '\n') - stash + 1);
 		if (!lines)
-		{
-			free(stash);
-			return (NULL);
-		}
+			return (free(stash), NULL);
 		stash = ft_memmove(stash, ft_strchr(stash, '\n') + 1, \
 		ft_strlen(ft_strchr(stash, '\n')));
-		return (lines);
+		return (stash = NULL, lines);
 	}
 	else if (stash && *stash)
 		return (ft_last_line(&stash));
-	return (free(stash), NULL);
+	return (free(stash), stash = NULL, NULL);
 }
