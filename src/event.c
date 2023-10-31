@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   event.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jralph <jralph@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 17:43:24 by jose              #+#    #+#             */
-/*   Updated: 2023/06/18 00:52:33 by jose             ###   ########.fr       */
+/*   Updated: 2023/10/31 19:51:02 by jralph           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_close_win(t_win *window)
 {
-	return (ft_free_window(window), EXIT_SUCCESS);
+	return (mlx_loop_end(window->mlx), EXIT_SUCCESS);
 }
 
 static void	ft_move_manager(t_win *win, int keycode)

@@ -6,7 +6,7 @@
 /*   By: jralph <jralph@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 18:24:25 by jose              #+#    #+#             */
-/*   Updated: 2023/10/31 16:19:54 by jralph           ###   ########.fr       */
+/*   Updated: 2023/10/31 21:23:30 by jralph           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,6 +145,12 @@ typedef struct s_win
 	t_player	*player;
 }	t_win;
 
+typedef struct s_garbe
+{
+	t_win	*win;
+	char	**file;
+}	t_garbe;
+
 /*	parse.c	*/
 int		ft_good_extension(char *str_file);
 t_win	*ft_parsing_manager(char *str_file);
@@ -160,6 +166,8 @@ int		ft_is_a_good_file(char **file);
 /*	parse_texture.c	*/
 int		ft_research_texture(char *str, char **file);
 int		ft_look_order(char **file);
+
+/*	parse_texture_utils.c	*/
 int		ft_verif_args(char *str, char **file);
 
 /*	parse_map.c	*/
@@ -173,6 +181,7 @@ void	ft_free_all_str(char **map);
 void	ft_free_all_image(void *mlx, t_data_img *lst);
 void	ft_free_window(t_win *window);
 void	ft_free_color(t_color *color);
+void	ft_free_garbe(void);
 
 /*	init.c	*/
 void	ft_init_all(t_win *win, char **file);
@@ -225,5 +234,8 @@ void	ft_move_back(t_player *player, char **map);
 
 /*	rotate.c	*/
 void	ft_turn(t_player *player, double rspeed);
+
+/*	garbe.c	*/
+t_garbe	*ft_get_garbe(void);
 
 #endif

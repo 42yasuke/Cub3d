@@ -69,7 +69,7 @@ char	**ft_set_file(char *str_file)
 	file = ft_init_file(str_file);
 	fd = open(str_file, O_RDONLY);
 	if (fd == -1)
-		ft_error(OPEN_FAILED, str_file, NULL);
+		(ft_free_all_str(file), ft_error(OPEN_FAILED, str_file, NULL));
 	nbr_str = 0;
 	line = get_next_line(fd);
 	while (line)
@@ -83,7 +83,6 @@ char	**ft_set_file(char *str_file)
 
 int	ft_good_texture(char **file)
 {
-	(void)file;
 	if (!ft_research_texture("NO", file))
 		return (false);
 	if (!ft_research_texture("SO", file))

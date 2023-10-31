@@ -100,32 +100,3 @@ int	ft_look_order(char **file)
 	}
 	return (true);
 }
-
-int	ft_verif_args(char *str, char **file)
-{
-	int		i;
-	int		i2;
-	char	**l;
-	char	**l2;
-
-	i = -1;
-	i2 = -1;
-	while (file[++i])
-	{
-		l = ft_split(file[i], ' ');
-		if (!ft_strncmp(l[0], str, ft_strlen(str)))
-		{
-			l2 = ft_split(l[1], ',');
-			while (l2[++i2])
-			{
-				if (!(ft_strlen(l2[1]) > 0 && ft_strlen(l2[1]) < 4))
-					return (ft_free_all_str(l), ft_free_all_str(l2), false);
-				if (!(ft_atoi(l2[1]) > -1 && ft_atoi(l2[1]) < 256))
-					return (ft_free_all_str(l), ft_free_all_str(l2), false);
-			}
-			ft_free_all_str(l2);
-		}
-		ft_free_all_str(l);
-	}
-	return (true);
-}

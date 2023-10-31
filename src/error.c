@@ -14,6 +14,7 @@
 
 void	ft_error(int err, char *err_msg, t_win *win)
 {
+	(void)win;
 	if (err == BAD_PARAMETERS)
 		ft_printf("Error: %s\n", err_msg);
 	if (err == MALLOC_FAILED)
@@ -30,12 +31,5 @@ void	ft_error(int err, char *err_msg, t_win *win)
 		ft_printf("Error: %s\n", err_msg);
 	if (err == IMAGE_NOT_F)
 		ft_printf("Error: %s\n", err_msg);
-	if (win)
-	{
-		ft_free_window(win);
-		if (win->mlx)
-			mlx_destroy_display(win->mlx);
-		(free(win->mlx), free(win));
-	}
-	exit(EXIT_FAILURE);
+	(ft_free_garbe(), exit(EXIT_FAILURE));
 }

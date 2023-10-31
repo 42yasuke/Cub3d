@@ -6,13 +6,13 @@
 /*   By: jralph <jralph@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 16:15:35 by jose              #+#    #+#             */
-/*   Updated: 2023/10/31 17:54:59 by jralph           ###   ########.fr       */
+/*   Updated: 2023/10/31 20:22:51 by jralph           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	ft_add_image(t_win *win, char *path, int id, char **file)
+static void	ft_add_image(t_win *win, char *path, int id)
 {
 	t_data_img	*tmp;
 
@@ -32,10 +32,7 @@ static void	ft_add_image(t_win *win, char *path, int id, char **file)
 	tmp->img->id = id;
 	tmp->img->addr = NULL;
 	if (!tmp->img->img)
-	{
-		(free(path), ft_free_all_str(file));
-		ft_error(IMAGE_NOT_F, "image_not_found", win);
-	}
+		(free(path), ft_error(IMAGE_NOT_F, "image_not_found", win));
 	tmp->img->addr = mlx_get_data_addr(tmp->img->img, &tmp->img->bpp, \
 	&tmp->img->size_line, &tmp->img->endian);
 }
@@ -88,8 +85,8 @@ static void	ft_get_wall_image(t_win *win, char **file, char *str, int id)
 
 	path = ft_get_image_path(file, str);
 	if (!path)
-		(ft_free_all_str(file), ft_error(MALLOC_FAILED, M_F, win));
-	(ft_add_image(win, path, id, file), free(path));
+		ft_error(MALLOC_FAILED, M_F, win);
+	(ft_add_image(win, path, id), free(path));
 }
 
 void	ft_add_all_image(t_win *win, char **file)

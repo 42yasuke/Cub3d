@@ -31,27 +31,32 @@ int	ft_good_extension(char *str_file)
 static t_win	*ft_init(char **file)
 {
 	t_win	*win;
+	t_garbe	*garbe;
 
+	garbe = ft_get_garbe();
 	win = malloc(sizeof(*win));
 	if (!win)
-		(ft_free_all_str(file), ft_error(MALLOC_FAILED, "malloc_window", NULL));
+		ft_error(MALLOC_FAILED, "malloc_window", NULL);
+	garbe->win = win;
 	ft_init_all(win, file);
 	win->mlx = mlx_init();
 	if (!win->mlx)
-		(ft_free_all_str(file), ft_error(MLX_INIT_FAILED, "mlx_init", win));
+		ft_error(MLX_INIT_FAILED, "mlx_init", win);
 	win->mlx_win = mlx_new_window(win->mlx, WIDTH, HEIGHT, "CUB3D");
 	if (!win->mlx_win)
-		(ft_free_all_str(file), ft_error(MLX_WIN_FAILED, "mlx_win", win));
-	ft_add_all_image(win, file);
-	return (ft_free_all_str(file), win);
+		ft_error(MLX_WIN_FAILED, "mlx_win", win);
+	return (ft_add_all_image(win, file), win);
 }
 
 t_win	*ft_parsing_manager(char *str_file)
 {
 	char	**file;
+	t_garbe	*garbe;
 
+	garbe = ft_get_garbe();
 	file = ft_set_file(str_file);
+	garbe->file = file;
 	if (!ft_is_a_good_file(file))
-		(ft_free_all_str(file), ft_error(BAD_PARAMETERS, str_file, NULL));
+		ft_error(BAD_PARAMETERS, str_file, NULL);
 	return (ft_init(file));
 }

@@ -6,7 +6,7 @@
 #    By: jralph <jralph@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/14 17:43:43 by jose              #+#    #+#              #
-#    Updated: 2023/10/31 16:19:41 by jralph           ###   ########.fr        #
+#    Updated: 2023/10/31 21:23:03 by jralph           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ C_FILES =	main.c \
 			parse.c \
 			parse_utils.c \
 			parse_file.c \
-			parse_texture.c \
+			parse_texture.c parse_texture_utils.c \
 			parse_map.c \
 			error.c \
 			free.c \
@@ -34,7 +34,8 @@ C_FILES =	main.c \
 			draw.c draw_utils.c \
 			raycasting.c raycasting_utils.c raycasting_utils2.c \
 			move.c \
-			rotate.c
+			rotate.c \
+			garbe.c
 
 SRC = $(addprefix src/, $(C_FILES))
 

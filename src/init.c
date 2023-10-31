@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jralph <jralph@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 04:31:27 by jose              #+#    #+#             */
-/*   Updated: 2023/06/18 03:48:39 by jose             ###   ########.fr       */
+/*   Updated: 2023/10/31 20:32:46 by jralph           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ static char	**ft_init_map(char **file)
 	int		j;
 
 	i = ft_get_map(file);
+	if (i == -1)
+		return (NULL);
 	while (file[i])
 		i++;
 	map = malloc(sizeof(*map) * (i + 1));
@@ -27,9 +29,15 @@ static char	**ft_init_map(char **file)
 	while (i > -1)
 		map[i--] = NULL;
 	i = ft_get_map(file) - 1;
+	if (i == -2)
+		return (ft_free_all_str(map), NULL);
 	j = -1;
 	while (file[++i])
+	{
 		map[++j] = ft_strdup(file[i]);
+		if (!map[j])
+			return (ft_free_all_str(map), NULL);
+	}
 	return (map);
 }
 
@@ -97,14 +105,17 @@ void	ft_init_all(t_win *win, char **file)
 	win->lst = NULL;
 	win->mlx = NULL;
 	win->mlx_win = NULL;
+	win->map = NULL;
+	win->player = NULL;
+	win->color = NULL;
 	win->color = ft_init_color(file);
 	if (!win->color)
-		(ft_free_all_str(file), ft_error(MALLOC_FAILED, "m_fail", win));
+		ft_error(MALLOC_FAILED, "m_fail", win);
 	win->map = ft_init_map(file);
 	if (!win->map)
-		(ft_free_all_str(file), ft_error(MALLOC_FAILED, "m_fail", win));
+		ft_error(MALLOC_FAILED, "m_fail", win);
 	win->player = ft_init_player(win->map);
 	if (!win->player)
-		(ft_free_all_str(file), ft_error(MALLOC_FAILED, "m_fail", win));
+		ft_error(MALLOC_FAILED, "m_fail", win);
 	win->map[(int)(win->player->posx)][(int)(win->player->posy)] = '0';
 }

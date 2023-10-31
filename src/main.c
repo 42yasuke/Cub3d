@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jralph <jralph@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 18:17:16 by jose              #+#    #+#             */
-/*   Updated: 2023/06/17 22:59:31 by jose             ###   ########.fr       */
+/*   Updated: 2023/10/31 21:22:12 by jralph           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ int	main(int ac, char **av)
 {
 	t_win	*win;
 
-	(void)win;
 	if (ac != 2)
 		ft_error(BAD_PARAMETERS, "bad parameters", NULL);
 	if (!ft_good_extension(av[1]))
@@ -27,7 +26,5 @@ int	main(int ac, char **av)
 	mlx_hook(win->mlx_win, ClientMessage, \
 	StructureNotifyMask, &ft_close_win, win);
 	mlx_loop(win->mlx);
-	mlx_destroy_display(win->mlx);
-	(free(win->mlx), free(win));
-	return (EXIT_SUCCESS);
+	return (ft_free_garbe(), EXIT_SUCCESS);
 }

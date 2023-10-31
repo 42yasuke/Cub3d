@@ -42,6 +42,8 @@ int	ft_get_map(char **file)
 		if (ft_strchr(file[i], '1'))
 		{
 			line_whithout_space = ft_split(file[i], ' ');
+			if (!line_whithout_space)
+				return (-1);
 			if (ft_there_is_only_digit(line_whithout_space))
 				break ;
 			ft_free_all_str(line_whithout_space);
@@ -83,6 +85,8 @@ static int	ft_is_good_map(char **file)
 	int	i;
 
 	i = ft_get_map(file);
+	if (i == -1)
+		ft_error(MALLOC_FAILED, "malloc failed", NULL);
 	if (!file[i])
 		return (false);
 	if (!ft_map_closed(file, i))

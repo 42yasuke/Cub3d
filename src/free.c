@@ -37,10 +37,9 @@ void	ft_free_all_image(void *mlx, t_data_img *lst)
 	while (lst)
 	{
 		tmp = lst->next;
-		if (lst->img->img)
+		if (lst->img && lst->img->img)
 			mlx_destroy_image(mlx, lst->img->img);
-		free(lst->img);
-		free(lst);
+		(free(lst->img), free(lst));
 		lst = tmp;
 	}
 }
@@ -57,7 +56,6 @@ void	ft_free_window(t_win *window)
 		ft_free_all_image(window->mlx, window->lst);
 		if (window->mlx_win)
 			mlx_destroy_window(window->mlx, window->mlx_win);
-		mlx_loop_end(window->mlx);
 	}
 }
 
@@ -69,4 +67,21 @@ void	ft_free_color(t_color *color)
 	free(color->floor);
 	free(color);
 	color = NULL;
+}
+
+void	ft_free_garbe(void)
+{
+	t_garbe	*garbe;
+
+	garbe = ft_get_garbe();
+	ft_free_all_str(garbe->file);
+	if (garbe->win)
+	{
+		ft_free_window(garbe->win);
+		if (garbe->win->mlx)
+			mlx_destroy_display(garbe->win->mlx);
+		(free(garbe->win->mlx), free(garbe->win));
+	}
+	free(garbe);
+	garbe = NULL;
 }
