@@ -1,7 +1,7 @@
-NO ./image/wall_n.xpm
-SO ./image/wall_s.xpm
-WE ./image/wall_w.xpm
-EA ./image/wall_e.xpm
+NO /mnt/nfs/homes/jralph/Desktop/Cub3d/image/wall_n.xpm
+SO /mnt/nfs/homes/jralph/Desktop/Cub3d/image/wall_s.xpm
+WE /mnt/nfs/homes/jralph/Desktop/Cub3d/image/wall_w.xpm
+EA /mnt/nfs/homes/jralph/Desktop/Cub3d/image/wall_e.xpm
 
 F 255,255,25
 C 144,144,252
@@ -11,7 +11,7 @@ C 144,144,252
 10000000001
 10000000001
 10000100001
-10001S11001
+10001N11001
 10000000001
 10000000001
 10000000001

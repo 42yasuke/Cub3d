@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jralph <jralph@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 18:24:25 by jose              #+#    #+#             */
-/*   Updated: 2023/10/30 15:45:02 by jose             ###   ########.fr       */
+/*   Updated: 2023/10/31 16:19:54 by jralph           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@
 # define BAD_EXTENSION 7
 # define IMAGE_NOT_F 8
 # define M_F "malloc failed"
-# define REPLACE "                   "
+# define REPLACE "                   \n"
 
 typedef struct s_image
 {
