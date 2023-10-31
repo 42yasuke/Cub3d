@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_init_image.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jralph <jralph@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 16:15:35 by jose              #+#    #+#             */
-/*   Updated: 2023/06/18 04:17:26 by jose             ###   ########.fr       */
+/*   Updated: 2023/10/31 10:54:54 by jralph           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ static char	*ft_get_image_path(char **file, char *str)
 	int		i;
 
 	i = -1;
+	ret = NULL;
 	while (file[++i])
 	{
 		line = ft_split(file[i], ' ');
