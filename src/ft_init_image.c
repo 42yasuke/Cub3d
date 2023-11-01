@@ -6,7 +6,7 @@
 /*   By: jralph <jralph@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 16:15:35 by jose              #+#    #+#             */
-/*   Updated: 2023/11/01 16:01:38 by jralph           ###   ########.fr       */
+/*   Updated: 2023/11/01 17:06:00 by jralph           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ static char	*ft_get_image_path(char **file, char *str)
 		line = ft_split(file[i], ' ');
 		if (!line)
 			return (NULL);
-		if (!ft_strncmp(str, line[0], ft_strlen(str)))
+		if (!ft_strncmp(str, line[0], ft_strlen(line[0])))
 		{
 			ret = ft_strdup(line[1]);
 			if (!ret)

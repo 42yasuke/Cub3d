@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jralph <jralph@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 19:03:28 by jose              #+#    #+#             */
-/*   Updated: 2023/06/17 23:09:02 by jose             ###   ########.fr       */
+/*   Updated: 2023/11/01 17:13:41 by jralph           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,10 +83,10 @@ void	ft_tex_px_inc(t_win *win, t_ray *ray, int x)
 			ft_px_ext(win, NORTH, ray->texx, ray->texy));
 		else if (ray->side == 0 && ray->raydirx > 0)
 			ft_draw_pix(win, x * M + y, \
-			ft_px_ext(win, EAST, ray->texx, ray->texy));
+			ft_px_ext(win, SOUTH, ray->texx, ray->texy));
 		else if (ray->side == 1 && ray->raydiry > 0)
 			ft_draw_pix(win, x * M + y, \
-			ft_px_ext(win, SOUTH, ray->texx, ray->texy));
+			ft_px_ext(win, EAST, ray->texx, ray->texy));
 		else if (ray->side == 0 && ray->raydirx < 0)
 			ft_draw_pix(win, x * M + y, \
 			ft_px_ext(win, WEST, ray->texx, ray->texy));
