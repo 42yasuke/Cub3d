@@ -6,7 +6,7 @@
 /*   By: jralph <jralph@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 20:57:34 by jralph            #+#    #+#             */
-/*   Updated: 2023/11/01 15:18:08 by jralph           ###   ########.fr       */
+/*   Updated: 2023/11/01 16:02:33 by jralph           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static int	ft_verif_args_help(char **str)
 	i = -1;
 	line = ft_split(str[1], ',');
 	if (!line)
-		(ft_free_all_str(str), ft_error(MALLOC_FAILED, M_F, NULL));
+		(ft_free_all_str(str), ft_error(MALLOC_FAILED, M_F));
 	while (line[++i])
 	{
 		if (!(ft_strlen(line[i]) > 0 && ft_strlen(line[i]) < 4))
@@ -63,7 +63,7 @@ static void	ft_stick(char **file, char **line, int i)
 			new_line = ft_strjoin(new_line, line[j]);
 		free(tmp);
 		if (!new_line)
-			(ft_free_all_str(line), ft_error(MALLOC_FAILED, M_F, NULL));
+			(ft_free_all_str(line), ft_error(MALLOC_FAILED, M_F));
 	}
 	tmp = file[i];
 	file[i] = new_line;
@@ -80,11 +80,13 @@ int	ft_verif_args(char *str, char **file)
 	{
 		line = ft_split(file[i], ' ');
 		if (!line)
-			ft_error(MALLOC_FAILED, M_F, NULL);
+			ft_error(MALLOC_FAILED, M_F);
 		if (!ft_strncmp(line[0], str, ft_strlen(str)))
 		{
 			(ft_stick(file, line, i), ft_free_all_str(line));
 			line = ft_split(file[i], ' ');
+			if (!line)
+				ft_error(MALLOC_FAILED, M_F);
 			if (!ft_verif_args_help(line))
 				return (false);
 		}

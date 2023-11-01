@@ -22,7 +22,7 @@ static int	ft_research_bad_texture(char **file)
 	{
 		line = ft_split(file[i], ' ');
 		if (!line)
-			ft_error(MALLOC_FAILED, "line : malloc failed", NULL);
+			ft_error(MALLOC_FAILED, "line : malloc failed");
 		if (ft_strlen(line[0]) > 0 && \
 			ft_strncmp(line[0], "NO", 2) && \
 			ft_strncmp(line[0], "SO", 2) && \
@@ -72,7 +72,7 @@ int	ft_research_texture(char *str, char **file)
 	{
 		line = ft_split(file[i], ' ');
 		if (!line)
-			ft_error(MALLOC_FAILED, "line : malloc failed", NULL);
+			ft_error(MALLOC_FAILED, "line : malloc failed");
 		if (!ft_strncmp(line[0], str, ft_strlen(str)))
 		{
 			if (!*(str + 1) && (*str == 'F' || *str == 'C'))

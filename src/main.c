@@ -6,7 +6,7 @@
 /*   By: jralph <jralph@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 18:17:16 by jose              #+#    #+#             */
-/*   Updated: 2023/10/31 21:22:12 by jralph           ###   ########.fr       */
+/*   Updated: 2023/11/01 16:02:03 by jralph           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ int	main(int ac, char **av)
 	t_win	*win;
 
 	if (ac != 2)
-		ft_error(BAD_PARAMETERS, "bad parameters", NULL);
+		ft_error(BAD_PARAMETERS, "bad parameters");
 	if (!ft_good_extension(av[1]))
-		ft_error(BAD_EXTENSION, "bad file extension", NULL);
+		ft_error(BAD_EXTENSION, "bad file extension");
 	win = ft_parsing_manager(av[1]);
 	mlx_loop_hook(win->mlx, &ft_draw_window, win);
 	mlx_hook(win->mlx_win, KeyPress, KeyPressMask, &ft_event_manager, win);

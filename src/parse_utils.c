@@ -21,7 +21,7 @@ static char	**ft_init_file(char *str_file)
 
 	fd = open(str_file, O_RDONLY);
 	if (fd == -1)
-		ft_error(OPEN_FAILED, str_file, NULL);
+		ft_error(OPEN_FAILED, str_file);
 	nbr_str = 0;
 	line = get_next_line(fd);
 	while (line)
@@ -33,7 +33,7 @@ static char	**ft_init_file(char *str_file)
 	close(fd);
 	file = malloc(sizeof(*file) * (nbr_str + 1));
 	if (!file)
-		ft_error(MALLOC_FAILED, "file : malloc failed", NULL);
+		ft_error(MALLOC_FAILED, "file : malloc failed");
 	while (nbr_str > -1)
 		file[nbr_str--] = NULL;
 	return (file);
@@ -51,7 +51,7 @@ static void	ft_cpy(char **file, int *nbr_str, char *line)
 	{
 		free(line);
 		ft_free_all_str(file);
-		ft_error(MALLOC_FAILED, M_F, NULL);
+		ft_error(MALLOC_FAILED, M_F);
 	}
 	str = ft_strchr(file[nbr_str[0]], '\n');
 	if (str)
@@ -69,7 +69,7 @@ char	**ft_set_file(char *str_file)
 	file = ft_init_file(str_file);
 	fd = open(str_file, O_RDONLY);
 	if (fd == -1)
-		(ft_free_all_str(file), ft_error(OPEN_FAILED, str_file, NULL));
+		(ft_free_all_str(file), ft_error(OPEN_FAILED, str_file));
 	nbr_str = 0;
 	line = get_next_line(fd);
 	while (line)

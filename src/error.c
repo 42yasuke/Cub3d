@@ -12,9 +12,8 @@
 
 #include "cub3d.h"
 
-void	ft_error(int err, char *err_msg, t_win *win)
+void	ft_error(int err, char *err_msg)
 {
-	(void)win;
 	if (err == BAD_PARAMETERS)
 		ft_printf("Error: %s\n", err_msg);
 	if (err == MALLOC_FAILED)

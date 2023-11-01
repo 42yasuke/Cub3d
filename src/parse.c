@@ -36,15 +36,15 @@ static t_win	*ft_init(char **file)
 	garbe = ft_get_garbe();
 	win = malloc(sizeof(*win));
 	if (!win)
-		ft_error(MALLOC_FAILED, "malloc_window", NULL);
+		ft_error(MALLOC_FAILED, "malloc_window");
 	garbe->win = win;
 	ft_init_all(win, file);
 	win->mlx = mlx_init();
 	if (!win->mlx)
-		ft_error(MLX_INIT_FAILED, "mlx_init", win);
+		ft_error(MLX_INIT_FAILED, "mlx_init");
 	win->mlx_win = mlx_new_window(win->mlx, WIDTH, HEIGHT, "CUB3D");
 	if (!win->mlx_win)
-		ft_error(MLX_WIN_FAILED, "mlx_win", win);
+		ft_error(MLX_WIN_FAILED, "mlx_win");
 	return (ft_add_all_image(win, file), win);
 }
 
@@ -57,6 +57,6 @@ t_win	*ft_parsing_manager(char *str_file)
 	file = ft_set_file(str_file);
 	garbe->file = file;
 	if (!ft_is_a_good_file(file))
-		ft_error(BAD_PARAMETERS, str_file, NULL);
+		ft_error(BAD_PARAMETERS, str_file);
 	return (ft_init(file));
 }

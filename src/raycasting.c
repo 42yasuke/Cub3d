@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jralph <jralph@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 00:17:57 by jose              #+#    #+#             */
-/*   Updated: 2023/06/17 23:02:45 by jose             ###   ########.fr       */
+/*   Updated: 2023/11/01 16:03:47 by jralph           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static t_ray	*ft_set_ray(t_win *win, int i)
 	pl = win->player;
 	ray = malloc(sizeof(*ray));
 	if (!ray)
-		ft_error(MALLOC_FAILED, M_F, win);
+		ft_error(MALLOC_FAILED, M_F);
 	ft_init_ray(ray);
 	ray->camerax = 2 * i / (double)WIDTH - 1;
 	ray->rayposx = pl->posx;

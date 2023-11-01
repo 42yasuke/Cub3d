@@ -6,7 +6,7 @@
 /*   By: jralph <jralph@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 18:24:25 by jose              #+#    #+#             */
-/*   Updated: 2023/10/31 21:23:30 by jralph           ###   ########.fr       */
+/*   Updated: 2023/11/01 16:00:48 by jralph           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,7 +174,7 @@ int		ft_verif_args(char *str, char **file);
 int		ft_map_closed(char **file, int i);
 
 /*	error.c	*/
-void	ft_error(int err, char *err_msg, t_win *win);
+void	ft_error(int err, char *err_msg);
 
 /*	free.c	*/
 void	ft_free_all_str(char **map);

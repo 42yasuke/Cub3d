@@ -86,7 +86,7 @@ static int	ft_is_good_map(char **file)
 
 	i = ft_get_map(file);
 	if (i == -1)
-		ft_error(MALLOC_FAILED, "malloc failed", NULL);
+		ft_error(MALLOC_FAILED, "malloc failed");
 	if (!file[i])
 		return (false);
 	if (!ft_map_closed(file, i))
