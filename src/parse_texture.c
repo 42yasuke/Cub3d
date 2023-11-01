@@ -42,6 +42,8 @@ static int	ft_verif_texture(char **line, char *str, int *nb)
 {
 	int	fd;
 
+	if (!*(str + 1) && (*str == 'F' || *str == 'C'))
+		return (nb[0]++, true);
 	if (line[1] && ft_strlen(str) == ft_strlen(line[0]) && !line[2])
 	{
 		nb[0]++;
@@ -73,10 +75,8 @@ int	ft_research_texture(char *str, char **file)
 		line = ft_split(file[i], ' ');
 		if (!line)
 			ft_error(MALLOC_FAILED, "line : malloc failed");
-		if (!ft_strncmp(line[0], str, ft_strlen(str)))
+		if (!ft_strncmp(line[0], str, ft_strlen(line[0])))
 		{
-			if (!*(str + 1) && (*str == 'F' || *str == 'C'))
-				return (ft_free_all_str(line), true);
 			if (!ft_verif_texture(line, str, &nb))
 				return (ft_free_all_str(line), false);
 		}
