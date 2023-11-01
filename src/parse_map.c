@@ -6,7 +6,7 @@
 /*   By: jralph <jralph@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 19:51:12 by jose              #+#    #+#             */
-/*   Updated: 2023/10/31 15:58:59 by jralph           ###   ########.fr       */
+/*   Updated: 2023/11/01 20:15:33 by jralph           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,16 @@ static int	ft_verif_first_and_last_char_of_each_line(char **file, int i_start)
 
 static int	ft_verif_space_around_him(char **file, int i, int j)
 {
-	if (!file[i - 1][j - 1] || !file[i - 1][j] || \
-	!file[i - 1][j + 1] || !file[i][j - 1] || \
-	!file[i][j] || !file[i][j + 1] || \
-	!file[i + 1][j - 1] || !file[i + 1][j] || \
-	!file[i + 1][j + 1])
+	int	len;
+
+	len = ft_strlen(file[i - 1]);
+	if (len < j - 1 || len < j || len < j + 1)
+		return (false);
+	len = ft_strlen(file[i]);
+	if (len < j - 1 || len < j || len < j + 1)
+		return (false);
+	len = ft_strlen(file[i + 1]);
+	if (len < j - 1 || len < j || len < j + 1)
 		return (false);
 	if (file[i - 1][j - 1] == ' ' || file[i - 1][j] == ' ' || \
 	file[i - 1][j + 1] == ' ' || file[i][j - 1] == ' ' || \

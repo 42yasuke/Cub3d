@@ -6,7 +6,7 @@
 /*   By: jralph <jralph@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 20:57:34 by jralph            #+#    #+#             */
-/*   Updated: 2023/11/01 18:27:08 by jralph           ###   ########.fr       */
+/*   Updated: 2023/11/01 20:05:56 by jralph           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,13 @@ static int	ft_verif_args_help(char **str)
 	int		i;
 
 	i = -1;
+	if (!str[1])
+		return (ft_free_all_str(str), false);
 	line = ft_split(str[1], ',');
 	if (!line)
 		(ft_free_all_str(str), ft_error(MALLOC_FAILED, M_F));
 	while (line[++i])
 	{
-		if (i == 3)
-			return (ft_free_all_str(str), ft_free_all_str(line), false);
 		if (!(ft_strlen(line[i]) > 0 && ft_strlen(line[i]) < 4))
 			return (ft_free_all_str(str), ft_free_all_str(line), false);
 		if (!ft_check_digit(line[i]))
@@ -45,6 +45,8 @@ static int	ft_verif_args_help(char **str)
 		if (!(ft_atoi(line[i]) > -1 && ft_atoi(line[i]) < 256))
 			return (ft_free_all_str(str), ft_free_all_str(line), false);
 	}
+	if (i != 3)
+		return (ft_free_all_str(str), ft_free_all_str(line), false);
 	return (ft_free_all_str(line), true);
 }
 
