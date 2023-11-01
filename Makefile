@@ -6,13 +6,13 @@
 #    By: jralph <jralph@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/14 17:43:43 by jose              #+#    #+#              #
-#    Updated: 2023/10/31 21:23:03 by jralph           ###   ########.fr        #
+#    Updated: 2023/11/01 14:43:35 by jralph           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror
 
 CFLAGS_OBJ = -Wall -Wextra -Werror -c -g
 
@@ -61,7 +61,7 @@ libmlx.a :
 			$(CC) $(CFLAGS_OBJ) $< -o $@ $(INC)
 
 $(NAME) : libft.a libmlx.a $(OBJ)
-			$(CC) $(CFLAGS) $(OBJ) -o $(NAME) $(LIB) $(MLBX)
+			$(CC) $(OBJ) -o $(NAME) $(LIB) $(MLBX)
 
 clean :
 		make clean -C libft

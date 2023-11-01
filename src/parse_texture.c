@@ -75,6 +75,8 @@ int	ft_research_texture(char *str, char **file)
 			ft_error(MALLOC_FAILED, "line : malloc failed", NULL);
 		if (!ft_strncmp(line[0], str, ft_strlen(str)))
 		{
+			if (!*(str + 1) && (*str == 'F' || *str == 'C'))
+				return (ft_free_all_str(line), true);
 			if (!ft_verif_texture(line, str, &nb))
 				return (ft_free_all_str(line), false);
 		}
